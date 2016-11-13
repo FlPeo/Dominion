@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by sakalypse on 05/11/16.
  */
-public class Accueil  extends JFrame {
+public class View_Accueil extends JFrame {
     private int xSize, ySize;
 
     private JLabel titre;
@@ -18,8 +18,10 @@ public class Accueil  extends JFrame {
     /**
      * Constructeur de la vue
      */
-    Accueil()
+    View_Accueil()
     {
+        super();
+
         initAttribut();
         creerWidgetAccueil();
 

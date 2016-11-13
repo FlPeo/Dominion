@@ -6,19 +6,19 @@ import java.awt.event.ActionListener;
  */
 public class Control_Accueil implements ActionListener
 {
-    private Accueil accueil;
+    private View_Accueil viewAccueil;
     private Model_Accueil modelAccueil;
 
     /**
-     * Constructeur du controleur lié au menu de l'accueil
-     * @param accueil (vue de l'accueil)
-     * @param modelAccueil (données nécessaires au fonctionnement de l'accueil)
+     * Constructeur du controleur lié au menu de l'viewAccueil
+     * @param accueil (vue de l'viewAccueil)
+     * @param modelAccueil (données nécessaires au fonctionnement de l'viewAccueil)
      */
-    Control_Accueil(Accueil accueil, Model_Accueil modelAccueil)
+    Control_Accueil(View_Accueil accueil, Model_Accueil modelAccueil)
     {
-        this.accueil = accueil;
+        this.viewAccueil = accueil;
         this.modelAccueil = modelAccueil;
-        this.accueil.setButtonControl(this);
+        this.viewAccueil.setButtonControl(this);
     }
 
     /**
@@ -28,13 +28,18 @@ public class Control_Accueil implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        if(e.getSource().equals(accueil.getLancerPartie()))
+        if(e.getSource().equals(viewAccueil.getLancerPartie()))
         {
-            modelAccueil.demarrerPartie();
+            modelAccueil.demarrerPartie(); //ModelAccueil est-il vraiment utile ?
+            viewAccueil.dispose();
+
+            Model_Partie partie = new Model_Partie();
+            View_Partie vuePartie = new View_Partie(partie);
+            new Control_Partie(vuePartie, partie);
         }
-        else if(e.getSource().equals(accueil.getCredit()))
+        else if(e.getSource().equals(viewAccueil.getCredit()))
         {
-            accueil.jOptionMessage("Crédits",
+            viewAccueil.jOptionMessage("Crédits",
                     "Michael BOUTBOUL\n"
                     + "Marie-Lucile CANIARD\n"
                     + "Sylvain GUYOT\n"
@@ -42,7 +47,7 @@ public class Control_Accueil implements ActionListener
                     + "Adonis N'DOLO\n"
                     + "Florian PARTY");
         }
-        else if(e.getSource().equals(accueil.getQuitterJeu()))
+        else if(e.getSource().equals(viewAccueil.getQuitterJeu()))
         {
             System.exit(0);
         }
