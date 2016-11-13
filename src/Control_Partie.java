@@ -1,7 +1,10 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  * Created by florian on 13/11/2016.
  */
-public class Control_Partie {
+public class Control_Partie implements ActionListener{
 
     private View_Partie viewPartie;
     private Model_Partie modelPartie;
@@ -16,5 +19,11 @@ public class Control_Partie {
         this.viewPartie = vue;
         this.modelPartie = modele;
         //this.viewAccueil.setButtonControl(this);
+    }
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        //to do
     }
 }
