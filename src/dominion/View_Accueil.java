@@ -1,3 +1,5 @@
+package dominion;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -31,7 +33,7 @@ public class View_Accueil extends JFrame {
         ySize = (int) tk.getScreenSize().getHeight();
         setSize(xSize, ySize);
 
-        setTitle("Dominion");
+        setTitle("dominion.Dominion");
         setResizable(false);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,7 +46,7 @@ public class View_Accueil extends JFrame {
     private void initAttribut()
     {
         // Initialisation des variables
-        titre = new JLabel("Dominion");
+        titre = new JLabel("dominion.Dominion");
         titre.setForeground(new Color(0, 0, 100));
         titre.setFont(new Font("Arial", Font.BOLD, 30));
 
@@ -114,7 +116,7 @@ public class View_Accueil extends JFrame {
      */
     String messagePop(String message)
     {
-        return JOptionPane.showInputDialog(this, message, "Dominion", JOptionPane.QUESTION_MESSAGE);
+        return JOptionPane.showInputDialog(this, message, "dominion.Dominion", JOptionPane.QUESTION_MESSAGE);
     }
 
     /**

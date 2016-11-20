@@ -1,3 +1,5 @@
+package dominion;
+
 public class Dominion
 {
     public static void main (String[] args)

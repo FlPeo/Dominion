@@ -1,3 +1,5 @@
+package dominion;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -40,7 +42,7 @@ public class View_Partie  extends JFrame {
         setUndecorated(true);
 
 
-        setTitle("Dominion");
+        setTitle("dominion.Dominion");
         setResizable(false);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -159,7 +161,7 @@ public class View_Partie  extends JFrame {
 
     /**
      * createPanelCentral
-     * Permet de créer le Panel central (cartes du joueur, cartes action disponibles à l'achat, cartes de Victoire)
+     * Permet de créer le Panel central (cartes du joueur, cartes action disponibles à l'achat, cartes de dominion.Victoire)
      */
     private JPanel createPanelCentral() {
         int i;

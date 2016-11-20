@@ -1,3 +1,5 @@
+package dominion;
+
 /**
  * Created by sguyot4 on 19/11/16.
  */
