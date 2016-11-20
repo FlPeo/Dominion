@@ -12,9 +12,33 @@ public class UnitTestVictoireCards {
         Assert.assertEquals(1, carte.reservePoint);
     }
 
-    public void reserveDomainePerd1(){
+    public void reserveDomainePioche1(){
         VictoireCards carte = new VictoireCards();
         carte.domaine();
         Assert.assertEquals(11, carte.reserveCarteDomaine);
+    }
+
+    public void ducheVaut1(){
+        VictoireCards carte = new VictoireCards();
+        carte.duche();
+        Assert.assertEquals(3, carte.reservePoint);
+    }
+
+    public void reserveDuchePioche1(){
+        VictoireCards carte = new VictoireCards();
+        carte.duche();
+        Assert.assertEquals(11, carte.reserveCarteDuche);
+    }
+
+    public void ProvinceVaut6(){
+        VictoireCards carte = new VictoireCards();
+        carte.province();
+        Assert.assertEquals(6, carte.reservePoint);
+    }
+
+    public void reserveProvincePioche1(){
+        VictoireCards carte = new VictoireCards();
+        carte.province();
+        Assert.assertEquals(11, carte.reserveCarteDuche);
     }
 }
