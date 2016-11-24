@@ -9,14 +9,14 @@ import java.awt.event.ActionListener;
 public class Control_Partie implements ActionListener{
 
     private View_Partie viewPartie;
-    private Model_Partie modelPartie;
+    private Partie modelPartie;
 
     /**
      * Constructeur du controleur lié à la partie
      * @param vue (vue de la partie)
      * @param modele (données nécessaires au fonctionnement de la partie)
      */
-    Control_Partie(View_Partie vue, Model_Partie modele)
+    Control_Partie(View_Partie vue, Partie modele)
     {
         this.viewPartie = vue;
         this.modelPartie = modele;

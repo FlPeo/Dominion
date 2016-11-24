@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class View_Partie  extends JFrame {
 
     private int xSize, ySize;
-    private Model_Partie modelePartie;
+    private Partie modelePartie;
 
     private JLabel labelJoueur1;
     private JLabel labelJoueur2;
@@ -26,7 +26,7 @@ public class View_Partie  extends JFrame {
     /**
      * Constructeur de la vue
      */
-    View_Partie(Model_Partie partie)
+    View_Partie(Partie partie)
     {
         super();
         modelePartie = partie;

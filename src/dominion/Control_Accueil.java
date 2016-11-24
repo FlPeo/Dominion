@@ -35,7 +35,7 @@ public class Control_Accueil implements ActionListener
             modelAccueil.demarrerPartie(); //ModelAccueil est-il vraiment utile ?
             viewAccueil.dispose();
 
-            Model_Partie partie = new Model_Partie();
+            Partie partie = new Partie();
             View_Partie vuePartie = new View_Partie(partie);
             new Control_Partie(vuePartie, partie);
         }

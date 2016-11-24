@@ -9,7 +9,7 @@ public class Actions extends Cards {
      *  du coup j'ai fait ça sans grande conviction
      *  pleins de trucs seront a changer mais je pense que la base est là
      *  aucuns tests fait
-     **/
+     **//*
     private int nbPioche;
     private int addAction;
     private int addAchat;
@@ -42,6 +42,6 @@ public class Actions extends Cards {
 
     public void addAction(int nbAction){
         joueur.nbAction += nbAction;
-    }
+    }*/
 
 }
