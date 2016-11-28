@@ -19,7 +19,7 @@ public class VictoireCards extends Cards {
             case 3 : pointVictoire = 6; //province
                     cout = 8;
                     break;
-            case 4 : pointVictoire = -1; //malédiction
+            case 4 : pointVictoire = -1; //malédictio
                     cout = 0;
                     break;
         }
