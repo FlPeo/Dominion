@@ -5,8 +5,8 @@ package dominion;
  */
 public class VictoireCards extends Cards {
 
-    int pointVictoire;
-    int cout;
+    private int pointVictoire;
+    private int cout;
 
     VictoireCards(int valeurIdCarteVictoire){
         switch (valeurIdCarteVictoire){
@@ -20,5 +20,21 @@ public class VictoireCards extends Cards {
                     cout = 8;
                     break;
         }
+    }
+
+    public int getPointVictoire() {
+        return pointVictoire;
+    }
+
+    public void setPointVictoire(int pointVictoire) {
+        this.pointVictoire = pointVictoire;
+    }
+
+    public int getCout() {
+        return cout;
+    }
+
+    public void setCout(int cout) {
+        this.cout = cout;
     }
 }
