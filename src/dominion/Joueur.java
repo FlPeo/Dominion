@@ -11,7 +11,6 @@ public class Joueur
     private int coins;
     private int nbTourAction;
     private int nbTourAchat;
-    private int pointsVictoires;
     private int nbDeCartesADefausser;
     private String nomJoueur;
     private List<Cards> main;
@@ -22,7 +21,6 @@ public class Joueur
         coins = 1;
         nbTourAction = 1;
         nbTourAchat = 1;
-        pointsVictoires = 0;
         nbDeCartesADefausser = 0;
     }
 
@@ -39,11 +37,6 @@ public class Joueur
     public int addTourAchat(int nbAjout){
         nbTourAchat += nbAjout;
         return nbTourAchat;
-    }
-
-    public int addPoints(int nbAjout){
-        pointsVictoires += nbAjout;
-        return pointsVictoires;
     }
 
     public void piocher(int nbCarte){
