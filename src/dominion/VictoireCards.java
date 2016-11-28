@@ -5,34 +5,20 @@ package dominion;
  */
 public class VictoireCards extends Cards {
 
-    public int reservePoint = 0;
-    public int reserveCarteDomaine = 12;
-    public int reserveCarteDuche = 12;
-    public int reserveCarteProvince = 12;
+    int pointVictoire;
+    int cout;
 
-    /**
-     *  Vaut 1 point de victoire
-     *  Commence la partie avec 3 cartes domaine
-     */
-    public void domaine() {
-        reservePoint += 1;
-        reserveCarteDomaine--;
+    VictoireCards(int valeurIdCarteVictoire){
+        switch (valeurIdCarteVictoire){
+            case 1: pointVictoire = 1; //domaine
+                    cout = 2;
+                    break;
+            case 2: pointVictoire = 3; //duche
+                    cout = 5;
+                    break;
+            case 3 : pointVictoire = 6; //province
+                    cout = 8;
+                    break;
+        }
     }
-
-    /**
-     *  Vaut 3 points de victoire
-     */
-    public void duche(){
-        reservePoint += 3;
-        reserveCarteDuche--;
-    }
-
-    /**
-     *  Vaut 6 points de victoire
-     */
-    public void province(){
-        reservePoint += 6;
-        reserveCarteProvince--;
-    }
-
 }
