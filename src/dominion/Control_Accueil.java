@@ -35,7 +35,11 @@ public class Control_Accueil implements ActionListener
             modelAccueil.demarrerPartie(); //ModelAccueil est-il vraiment utile ?
             viewAccueil.dispose();
 
+            Joueur[] joueurs = new Joueur[2];
+            joueurs[0] = new Joueur("joueur1", null);   //a terme, il faudra donner le deck en parametre
+            joueurs[1] = new Joueur("joueur2", null);
             Partie partie = new Partie();
+            partie.setJoueurs(joueurs);
             View_Partie vuePartie = new View_Partie(partie);
             new Control_Partie(vuePartie, partie);
         }

@@ -6,6 +6,8 @@ package dominion;
 
 public class Partie
 {
+    private Joueur[] joueurs;
+    private Joueur joueurCourrant;
 
     private int reserveCarteDomaine = 12;
     private int reserveCarteDuche = 12;
@@ -41,5 +43,18 @@ public class Partie
 
     public void setReserveCarteProvince(int reserveCarteProvince) {
         this.reserveCarteProvince = reserveCarteProvince;
+    }
+
+    public Joueur getJoueurCourrant() {
+        return joueurCourrant;
+    }
+
+    public void setJoueurCourrant(Joueur joueurCourrant) {
+        this.joueurCourrant = joueurCourrant;
+    }
+
+    public void setJoueurs(Joueur[] joueurs) {
+        this.joueurs = joueurs;
+        joueurCourrant = joueurs[0];
     }
 }

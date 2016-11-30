@@ -1,6 +1,8 @@
 package dominion;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -14,11 +16,15 @@ public class Joueur
     private int nbDeCartesADefausser;
     private String nomJoueur;
     private List<Cards> main;
-    private List<Cards> deck;
+    private List<Cards> deck; // 0=fin, taille-1=debut
+    private List<Cards> defausse;
 
-    Joueur(String nomJoueur){
+    Joueur(String nomJoueur, List<Cards> deck){
         this.nomJoueur = nomJoueur;
-        coins = 1;
+        this.deck= deck;
+        main = new ArrayList<Cards>();
+        defausse = new ArrayList<Cards>();
+        coins = 0;
         nbTourAction = 1;
         nbTourAchat = 1;
         nbDeCartesADefausser = 0;
@@ -39,7 +45,7 @@ public class Joueur
         return nbTourAchat;
     }
 
-    public void piocher(int nbCarte){
+    /*public void piocher(int nbCarte){
         int taille;
         Cards card;
         for (int i = 0; i < nbCarte; i++){
@@ -52,6 +58,63 @@ public class Joueur
 
     public void defausser(){
 
+    }*/
+
+    public int getCoins() {
+        return coins;
     }
 
+    public void setCoins(int coins) {
+        this.coins = coins;
+    }
+
+    public int getNbTourAction() {
+        return nbTourAction;
+    }
+
+    public void setNbTourAction(int nbTourAction) {
+        this.nbTourAction = nbTourAction;
+    }
+
+    public int getNbTourAchat() {
+        return nbTourAchat;
+    }
+
+    public void setNbTourAchat(int nbTourAchat) {
+        this.nbTourAchat = nbTourAchat;
+    }
+
+    public int getSizeMain(){
+        return main.size();
+    }
+
+    public Cards getCarteMain(int index){
+        return main.get(index);
+    }
+
+    public int getSizeDeck(){
+        return deck.size();
+    }
+
+    public Cards getCarteDeck(int index){
+        return deck.get(index);
+    }
+
+    public void piocher(int valeur) {
+        Cards card;
+        for (int i = 0; i < valeur; i++){
+            card = deck.get(deck.size() - 1);
+            main.add(card);
+            deck.remove(card);
+            if(deck.size()==0){
+                defausseToDeck();
+            }
+        }
+    }
+
+    public void defausseToDeck(){
+        Collections.shuffle(defausse);
+        Collections.copy(deck, defausse);
+        defausse = new ArrayList<Cards>();
+    }
 }
