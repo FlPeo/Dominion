@@ -112,6 +112,13 @@ public class Joueur
         }
     }
 
+    public void mainToDefausse(){
+        for (int i=0; i<main.size(); i++){
+            defausse.add(main.get(i));
+        }
+        main.clear();
+    }
+
     public void defausseToDeck(){
         Collections.shuffle(defausse);
         Collections.copy(deck, defausse);

@@ -9,13 +9,13 @@ public class CoinsCards extends Cards
 
     CoinsCards(int valeurIdCarteCoins){
         switch (valeurIdCarteCoins){
-            case 1: pointCoin = 1; //copper
+            case 1: pointCoin = 1; //cuivre
                 setCout(2);
                 break;
-            case 2: pointCoin = 2; //silver
+            case 2: pointCoin = 2; //argent
                 setCout(3);
                 break;
-            case 3 : pointCoin = 3; //gold
+            case 3 : pointCoin = 3; //or
                 setCout(6);
                 break;
         }
