@@ -117,4 +117,8 @@ public class Joueur
         Collections.copy(deck, defausse);
         defausse = new ArrayList<Cards>();
     }
+
+    public List<Cards> getDeck(){
+        return deck;
+    }
 }
