@@ -33,7 +33,7 @@ public class Partie
                 //Peut jouer des cartes actions, jusqu'à ce qu'il ne puisse plus
                 for (j=0; j<joueurCourrant.getNbTourAction(); j++){
                     //todo :
-                        //attend l'action du joueur
+                        //attend l'action du joueur :
                             //if joue une carte -> -1 a son nbTourAction
                             //if carte donne des + nbTourAction -> augmenter le nbTourAction du joueur
                 }
