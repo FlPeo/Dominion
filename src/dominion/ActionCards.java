@@ -1,8 +1,11 @@
 package dominion;
 
-import dominion.Actions.Action;
+import dominion.Actions.*;
+import javafx.print.Collation;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -18,8 +21,8 @@ public class ActionCards extends Cards {
 
     private List<Action> listeActions;
 
-    public ActionCards(List<Action> actions, int cout){
-        super(cout);
+    public ActionCards(int id, List<Action> actions, int cout){   //id = numero de l'img de la carte
+        super(id, cout);
         listeActions = actions;
     }
 
@@ -28,6 +31,87 @@ public class ActionCards extends Cards {
             action.action();
         }
     }
+
+
+
+    public static ArrayList<ArrayList<ActionCards>> creer10CartesAction(Partie p, int nbJoueurs){
+        ActionCards[] listeToutesCartesActions = creer25CartesAction(p);
+        Collections.shuffle(Arrays.asList(listeToutesCartesActions));
+        ArrayList<ArrayList<ActionCards>> liste10CartesAction = selectionner10Cartes(listeToutesCartesActions, nbJoueurs);
+        return liste10CartesAction;
+    }
+
+
+    private static ActionCards[] creer25CartesAction(Partie p) {
+        ActionCards[] listeCartesActions = new ActionCards[25];
+        List<Action> listeActions = new ArrayList<Action>();
+
+        listeActions.add(new ActionAddXCartes(p, 1));    //carte marché
+        listeActions.add(new ActionAddXActions(p, 1));
+        listeActions.add(new ActionAddXAchats(p, 1));
+        listeActions.add(new ActionAddXCoins(p, 1));
+        listeCartesActions[0] = new ActionCards(4, listeActions, 5);
+
+        listeActions = new ArrayList<Action>();
+        listeActions.add(new ActionAddXCartes(p, 2));    //carte laboratoire
+        listeActions.add(new ActionAddXActions(p, 1));
+        listeCartesActions[1] = new ActionCards(9, listeActions, 5);
+
+        listeActions = new ArrayList<Action>();
+        listeActions.add(new ActionAddXCartes(p, 1));    //carte village
+        listeActions.add(new ActionAddXActions(p, 2));
+        listeCartesActions[2] = new ActionCards(10, listeActions, 3);
+
+        listeActions = new ArrayList<Action>();
+        listeActions.add(new ActionAddXAchats(p, 1));  //carte bucheron
+        listeActions.add(new ActionAddXCoins(p, 2));
+        listeCartesActions[3] = new ActionCards(11, listeActions, 3);
+
+        //14 et 20 = faisable facilement
+
+        listeActions = new ArrayList<Action>();
+        listeActions.add(new ActionAddXCartes(p, 3));  //carte forgeron
+        listeCartesActions[4] = new ActionCards(15, listeActions, 4);
+
+        listeActions = new ArrayList<Action>();
+        listeActions.add(new ActionAddXActions(p, 2));  //carte festival
+        listeActions.add(new ActionAddXAchats(p, 1));
+        listeActions.add(new ActionAddXCoins(p, 2));
+        listeCartesActions[5] = new ActionCards(23, listeActions, 5);
+
+
+        return listeCartesActions;
+    }
+
+    private static ArrayList<ArrayList<ActionCards>> selectionner10Cartes(ActionCards[] listeToutesCartesActions, int nbJoueurs) {
+        //TO DO
+        ArrayList<ArrayList<ActionCards>> listeCartes = new ArrayList<ArrayList<ActionCards>>();
+        ArrayList<ActionCards> cards;
+        int nbCartesJardins = (nbJoueurs == 2)?8:12;
+
+        for(int i = 0 ; i<10; i++){
+            cards = new ArrayList<>();
+            for(int j = 0 ; j<((listeToutesCartesActions[i].getId() == 12)?nbCartesJardins:10) ; j++){
+                cards.add(listeToutesCartesActions[i]);
+            }
+            listeCartes.add(cards);
+        }
+        return listeCartes;
+    }
+
+    /*public static int[] creerReservesCartesAction(ActionCards[] cartesAction, int nbJoueurs) {
+        int[] listeReservesCartesAction = new int[cartesAction.length];
+        int nbCartesJardins = (nbJoueurs == 2)?8:12;
+
+        for(int i = 0 ; i<cartesAction.length ; i++){
+            listeReservesCartesAction[i] = (cartesAction[i].getId() == 12)?nbCartesJardins:10;
+            //id 12 = carte Jardins (n'est pas presente avec le meme nombre que les autres)
+        }
+
+        return listeReservesCartesAction;
+    }*/
+
+
 
     /*
     private int nbPioche;

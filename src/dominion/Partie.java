@@ -1,5 +1,6 @@
 package dominion;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +15,12 @@ public class Partie
     //listeDeToutesLesPiles sera très utile pour verifier si 3 des piles sont vide
     private List<List<Cards>> listeDeToutesLesPiles;
 
-    private List<Cards> pileCuivre;
+    private List<ArrayList<VictoireCards>> listeCartesVictoire;
+    private List<ArrayList<CoinsCards>> listeCartesTresor;
+    private List<ArrayList<ActionCards>> listeCartesAction;
+    private ArrayList<ArrayList<ActionCards>> cartesAction;
+
+    /*private List<Cards> pileCuivre;
     private List<Cards> pileArgent;
     private List<Cards> pileOr;
 
@@ -31,60 +37,77 @@ public class Partie
     private List<Cards> pileAction7;
     private List<Cards> pileAction8;
     private List<Cards> pileAction9;
-    private List<Cards> pileAction10;
+    private List<Cards> pileAction10;*/
 
 
+    public static Partie creerPartie(String[] nomJoueurs) {
+        Joueur[] joueurs = new Joueur[nomJoueurs.length];
 
-    /**
-     * Constructeur du model en lien avec la partie
-     * Met en place la partie
-     */
-    Partie()
-    {
-        int i;
-
-        //coins
-        for (i=0; i<46; i++) //46 cartes cuivre
-            pileCuivre.add(new CoinsCards(1));
-        for (i=0; i<40; i++) //40 cartes argent
-            pileArgent.add(new CoinsCards(2));
-        for (i=0; i<30; i++) //30 cartes or
-            pileOr.add(new CoinsCards(3));
-
-        //victoires
-        for (i=0; i<8; i++) { //8 cartes pour toutes les piles victoires
-            pileDomaine.add(new VictoireCards(1));
-            pileDuche.add(new VictoireCards(2));
-            pileProvince.add(new VictoireCards(3));
+        for (int i = 0; i < nomJoueurs.length; i++) {
+            joueurs[i] = new Joueur(nomJoueurs[i], Joueur.createDeckDepart());
         }
 
-        //actions
-        for (i=0; i<10; i++) { //10 cartes pour toutes les piles actions
-            //todo : choisir aléatoirement 10 types de cartes actions
-            //todo : mettre en place les piles actions une fois que les cartes action seront faites
-            //pileAction1.add(...);
-            //pileAction2.add(...);
-            //...
-        }
 
-        //met en place la liste de toutes les piles
-        listeDeToutesLesPiles.add(pileDomaine);
-        listeDeToutesLesPiles.add(pileDuche);
-        listeDeToutesLesPiles.add(pileProvince);
-        listeDeToutesLesPiles.add(pileCuivre);
-        listeDeToutesLesPiles.add(pileArgent);
-        listeDeToutesLesPiles.add(pileOr);
-        listeDeToutesLesPiles.add(pileAction1);
-        listeDeToutesLesPiles.add(pileAction2);
-        listeDeToutesLesPiles.add(pileAction3);
-        listeDeToutesLesPiles.add(pileAction4);
-        listeDeToutesLesPiles.add(pileAction5);
-        listeDeToutesLesPiles.add(pileAction6);
-        listeDeToutesLesPiles.add(pileAction7);
-        listeDeToutesLesPiles.add(pileAction8);
-        listeDeToutesLesPiles.add(pileAction9);
-        listeDeToutesLesPiles.add(pileAction10);
+
+
+        ArrayList<ArrayList<VictoireCards>> cartesVictoire = VictoireCards.creerCartesVictoire(nomJoueurs.length);
+        ArrayList<ArrayList<CoinsCards>> cartesTresor = CoinsCards.creerCartesTresor(nomJoueurs.length);
+
+
+        Partie p = new Partie(cartesVictoire, cartesTresor);
+        ArrayList<ArrayList<ActionCards>> cartesAction = ActionCards.creer10CartesAction(p, nomJoueurs.length);
+
+
+        p.setCartesAction(cartesAction);
+        p.setJoueurs(joueurs);
+        return p;
     }
+
+
+
+
+
+
+    public Partie(ArrayList<ArrayList<VictoireCards>> cartesVictoire, ArrayList<ArrayList<CoinsCards>> cartesTresor) {
+
+        listeDeToutesLesPiles = new ArrayList<List<Cards>>();
+
+        this.listeCartesVictoire= cartesVictoire;
+        this.listeCartesTresor = cartesTresor;
+        //initReservesCartesAction();
+    }
+
+
+
+    /*public int getReserveCarteDuche() {
+        return reserveCarteDuche;
+    }
+
+    public void setReserveCarteDuche(int reserveCarteDuche) {
+        this.reserveCarteDuche = reserveCarteDuche;
+    }
+
+    public int getReserveCarteProvince() {
+        return reserveCarteProvince;
+    }
+
+    public void setReserveCarteProvince(int reserveCarteProvince) {
+        this.reserveCarteProvince = reserveCarteProvince;
+    }*/
+
+    public Joueur getJoueurCourrant() {
+        return joueurCourrant;
+    }
+
+    public void setJoueurCourrant(Joueur joueurCourrant) {
+        this.joueurCourrant = joueurCourrant;
+    }
+
+    public void setJoueurs(Joueur[] joueurs) {
+        this.joueurs = joueurs;
+        joueurCourrant = joueurs[0];
+    }
+
 
     /**
      * Gère le déroulement de la partie
@@ -102,7 +125,7 @@ public class Partie
      * @return true si la partie est terminé
      */
     private boolean finDePartie() {
-        if (pileProvince.size()==0) return true;
+        if (listeCartesVictoire.get(2).size()==0) return true;
 
 
         int nombrePileVide = 0;
@@ -116,12 +139,14 @@ public class Partie
     }
 
     /**
-    * Le joueur pioche un certain nombre de carte de son deck
+     * Le joueur pioche un certain nombre de carte de son deck
      * @nbCarte : le nombre de carte à piocher
      */
     public void joueurPioche(Joueur joueur, int nbCarte){
         joueur.piocher(nbCarte);
     }
+
+
 
     /**
      * Le joueur reçoit une carte dans sa defausse
@@ -143,16 +168,7 @@ public class Partie
         }
     }
 
-    public Joueur getJoueurCourrant() {
-        return joueurCourrant;
-    }
-
-    public void setJoueurCourrant(Joueur joueurCourrant) {
-        this.joueurCourrant = joueurCourrant;
-    }
-
-    public void setJoueurs(Joueur[] joueurs) {
-        this.joueurs = joueurs;
-        joueurCourrant = joueurs[0];
+    public void setCartesAction(ArrayList<ArrayList<ActionCards>> cartesAction) {
+        this.cartesAction = cartesAction;
     }
 }

@@ -100,6 +100,10 @@ public class Joueur
         return deck.get(index);
     }
 
+    public int getSizeDefausse(){
+        return defausse.size();
+    }
+
     public void piocher(int valeur) {
         Cards card;
         for (int i = 0; i < valeur; i++){
@@ -112,17 +116,33 @@ public class Joueur
         }
     }
 
+    public void defausseToDeck(){
+        Collections.shuffle(defausse);
+        for(Cards c : defausse){
+            deck.add(c);
+        }
+        defausse.clear();
+    }
+
     public void mainToDefausse(){
-        for (int i=0; i<main.size(); i++){
-            defausse.add(main.get(i));
+        for(Cards c : main){
+            defausse.add(c);
         }
         main.clear();
     }
 
-    public void defausseToDeck(){
-        Collections.shuffle(defausse);
-        Collections.copy(deck, defausse);
-        defausse = new ArrayList<Cards>();
+    public static List<Cards> createDeckDepart(){
+        List<Cards> deck = new ArrayList<Cards>();
+
+        for(int i = 0 ; i<7 ; i++){
+            deck.add(new CoinsCards(0));
+        }
+
+        for(int i = 0 ; i<3 ; i++){
+            deck.add(new VictoireCards(0));
+        }
+
+        return deck;
     }
 
     public List<Cards> getDeck(){

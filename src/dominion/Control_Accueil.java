@@ -38,7 +38,7 @@ public class Control_Accueil implements ActionListener
             Joueur[] joueurs = new Joueur[2];
             joueurs[0] = new Joueur("joueur1", null);   //a terme, il faudra donner le deck en parametre
             joueurs[1] = new Joueur("joueur2", null);
-            Partie partie = new Partie();
+            Partie partie = new Partie(null, null);    //il faudra appeler la methode static pour creer la partie
             partie.setJoueurs(joueurs);
             View_Partie vuePartie = new View_Partie(partie);
             new Control_Partie(vuePartie, partie);

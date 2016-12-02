@@ -10,12 +10,14 @@ import java.util.List;
  */
 public abstract class Cards {
     private int cout;
+    private int id;
 
-    public Cards(){
-
+    public Cards(int id){
+        this.id = id;
     }
 
-    public Cards(int cout){
+    public Cards(int id, int cout){
+        this(id);
         this.cout = cout;
     }
 
@@ -25,6 +27,10 @@ public abstract class Cards {
 
     public void setCout(int cout) {
         this.cout = cout;
+    }
+
+    public int getId() {
+        return id;
     }
     /*List<Cards> deck;
 

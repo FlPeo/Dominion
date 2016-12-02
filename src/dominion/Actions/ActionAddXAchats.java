@@ -1,6 +1,5 @@
 package dominion.Actions;
 
-import dominion.Actions.Action;
 import dominion.Partie;
 
 /**

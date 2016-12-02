@@ -7,26 +7,20 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static dominion.CreationObjetsPourTests.creerCartesPourTest;
+import static dominion.CreationObjetsPourTests.creerPartie;
+
 /**
  * Created by Flo on 30/11/2016.
  */
 public class ActionUnitTest {
 
-    public List<Cards> creerCartesPourTest(Partie p){
-        List<Action> listeActions = new ArrayList<Action>();
-        listeActions.add(new ActionAddXAchats(p, 5));
-        listeActions.add(new ActionAddXActions(p, 6));
 
-        List<Cards> liste = new ArrayList<Cards>();
-        liste.add(new ActionCards(listeActions, 4));
-        liste.add(new CoinsCards(2));
-        return liste;
-    }
 
     @Test
     public void testPlusXCoins(){
         Joueur[] joueurs = new Joueur[1];
-        Partie p = new Partie();
+        Partie p = creerPartie(joueurs);
         joueurs[0] = new Joueur("joueur", creerCartesPourTest(p));
         p.setJoueurs(joueurs);
 
@@ -43,7 +37,7 @@ public class ActionUnitTest {
     @Test
     public void testPlusXActions(){
         Joueur[] joueurs = new Joueur[1];
-        Partie p = new Partie();
+        Partie p = creerPartie(joueurs);;
         joueurs[0] = new Joueur("joueur", creerCartesPourTest(p));
         p.setJoueurs(joueurs);
 
@@ -60,7 +54,7 @@ public class ActionUnitTest {
     @Test
     public void testPlusXAchats(){
         Joueur[] joueurs = new Joueur[1];
-        Partie p = new Partie();
+        Partie p = creerPartie(joueurs);;
         joueurs[0] = new Joueur("joueur", creerCartesPourTest(p));
         p.setJoueurs(joueurs);
 
@@ -77,7 +71,7 @@ public class ActionUnitTest {
     @Test
     public void testPlusXCartes(){
         Joueur[] joueurs = new Joueur[1];
-        Partie p = new Partie();
+        Partie p = creerPartie(joueurs);;
         joueurs[0] = new Joueur("joueur", creerCartesPourTest(p));
         p.setJoueurs(joueurs);
 
@@ -85,13 +79,16 @@ public class ActionUnitTest {
         Action a = new ActionAddXCartes(p, 1);
         a.action();
         Assert.assertEquals(1, joueurs[0].getSizeMain());
-        Assert.assertEquals(1, joueurs[0].getSizeDeck());
+        Assert.assertEquals(7, joueurs[0].getSizeDeck());   //de base, 8 cartes dans deck
 
         a.action();
         Assert.assertEquals(2, joueurs[0].getSizeMain());
-        Assert.assertEquals(0, joueurs[0].getSizeDeck());
-    }
+        Assert.assertEquals(6, joueurs[0].getSizeDeck());
 
-    //Il faudra tester la reconstitution du deck à partir de la defausse
+        a = new ActionAddXCartes(p, 2);
+        a.action();
+        Assert.assertEquals(4, joueurs[0].getSizeMain());
+        Assert.assertEquals(4, joueurs[0].getSizeDeck());
+    }
 
 }
