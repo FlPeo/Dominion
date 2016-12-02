@@ -91,44 +91,8 @@ public class Partie
      * @return : le gagnant
      */
     public Joueur organisationPartie(){
-        //1 phase d'action
-        //1.5 joue les cartes coins
-        //2 phase d'achat
-        //3 fin de phases
-        int i,j;
-        //continuer a faire des tours tant que la partie n'est pas terminé
-        while(!finDePartie()){
-            //a chaque début de tour, tous les joueurs pioche 5 cartes :
-            for (i=0; i<joueurs.length;i++){
-                joueurs[i].piocher(5);
-            }
-
-            //chaque joueurs jouent dans un tour
-            for (i=0; i<joueurs.length;i++){
-                joueurCourrant = joueurs[i];
-
-                //1) Peut jouer des cartes actions, jusqu'à ce qu'il ne puisse plus
-                for (j=0; j<joueurCourrant.getNbTourAction(); j++){
-                    //todo :
-                    //attend l'action du joueur
-                    //if carte donne des + nbTourAction -> augmenter le nbTourAction du joueur
-                    //if plus de carte action dans la main -> sort de la boucle
-                }
-
-                //1.5) todo : Joue les cartes coins
-
-                //2) Peut acheter des cartes, jusqu'à ce qu'il ne puisse plus
-                for (j=0; j<joueurCourrant.getNbTourAchat(); j++){
-                    //todo :
-                    //attend l'action du joueur
-                }
-
-                //3) Vide la main du joueur
-                joueurCourrant.mainToDefausse();
-            }
-        }
-
-        return joueurCourrant; //todo : a changer, il faut retourner le gagnant
+        //todo : a faire
+        return joueurCourrant;
     }
 
     /**
