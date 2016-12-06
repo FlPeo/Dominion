@@ -21,8 +21,6 @@ public class ActionCards extends Cards {
 
     private List<Action> listeActions;
     private boolean carteADefausserApresAction;
-
-
     private static ActionCards carteBoucheTrou = new ActionCards(5, new ArrayList<Action>(), 3);
     //Supprimer la carte bouche trou des que possible ! (quand on aura fait toutes les cartes action
 
@@ -45,6 +43,14 @@ public class ActionCards extends Cards {
 
     public boolean isCarteAction(){
         return true;
+    }
+
+    public void setCarteADefausserApresAction() {
+        this.carteADefausserApresAction = false;
+    }
+
+    public boolean isCarteADefausserApresAction() {
+        return this.carteADefausserApresAction;
     }
 
 
@@ -120,61 +126,5 @@ public class ActionCards extends Cards {
         return listeCartes;
     }
 
-    public void setCarteADefausserApresAction() {
-        this.carteADefausserApresAction = false;
-    }
-
-    public boolean isCarteADefausserApresAction() {
-        return this.carteADefausserApresAction;
-    }
-
-    /*public static int[] creerReservesCartesAction(ActionCards[] cartesAction, int nbJoueurs) {
-        int[] listeReservesCartesAction = new int[cartesAction.length];
-        int nbCartesJardins = (nbJoueurs == 2)?8:12;
-
-        for(int i = 0 ; i<cartesAction.length ; i++){
-            listeReservesCartesAction[i] = (cartesAction[i].getId() == 12)?nbCartesJardins:10;
-            //id 12 = carte Jardins (n'est pas presente avec le meme nombre que les autres)
-        }
-
-        return listeReservesCartesAction;
-    }*/
-
-
-
-    /*
-    private int nbPioche;
-    private int addAction;
-    private int addAchat;
-    private int addRessource;
-    private int nbDefausse;
-
-    public ActionCards(int nbPioche, int addAction, int addAchat, int addRessource, int nbDefausse){
-        this.nbPioche = nbPioche;
-        this.nbDefausse = nbDefausse;
-        this.addAction = addAction;
-        this.addAchat = addAchat;
-        this.addRessource = addRessource;
-    }
-
-    public void piocheCarte(int nbPioche) {
-        for (int i = 0; i < nbPioche; i++){
-            main.addCarte();
-        }
-    }
-
-    public void defausseCarte(int nbDefausse){
-        for (int i = 0; i < nbDefausse; i++){
-            main.defausseCarte();
-        }
-    }
-
-    public void addCoin(int nbCoin){
-        joueur.nbCoin += nbCoin;
-    }
-
-    public void addAction(int nbAction){
-        joueur.nbAction += nbAction;
-    }*/
 
 }

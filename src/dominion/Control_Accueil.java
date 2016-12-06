@@ -36,7 +36,7 @@ public class Control_Accueil implements ActionListener
             viewAccueil.dispose();
 
             String[] joueurs = new String[2];
-            joueurs[0] = "joueur1";   //a terme, il faudra donner le deck en parametre
+            joueurs[0] = "joueur1";
             joueurs[1] = "joueur2";
             Partie partie= Partie.creerPartie(joueurs);
             View_Partie vuePartie = new View_Partie(partie);

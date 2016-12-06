@@ -23,7 +23,6 @@ public class Control_Partie implements ActionListener{
     {
         this.viewPartie = vue;
         this.modelPartie = modele;
-        //this.viewAccueil.setButtonControl(this);
         viewPartie.setActionListener(this);
     }
 
@@ -92,6 +91,9 @@ public class Control_Partie implements ActionListener{
         }
     }
 
+
+
+
     public boolean isCarteVictoire(int i){
         return i<=3;
     }
@@ -107,6 +109,7 @@ public class Control_Partie implements ActionListener{
     public boolean isBoutonChoix(int i){
         return i>=17 && i<=16+NB_BOUTONS_CHOIX;
     }
+
     public boolean isCarteMain(int i){
         return i>=17+NB_BOUTONS_CHOIX;
     }

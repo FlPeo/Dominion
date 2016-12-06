@@ -33,6 +33,10 @@ public class Joueur
         nbDeCartesADefausser = 0;
     }
 
+
+
+
+    //les add basiques
     public int addCoin(int nbAjout){
         coins += nbAjout;
         return coins;
@@ -48,6 +52,11 @@ public class Joueur
         return nbTourAchat;
     }
 
+
+
+
+
+    //les reductions de tours
     public void reduitTourAction(){
         nbTourAction--;
     }
@@ -56,76 +65,28 @@ public class Joueur
         nbTourAchat--;
     }
 
-    /*public void piocher(int nbCarte){
-        int taille;
-        Cards card;
-        for (int i = 0; i < nbCarte; i++){
-            taille = deck.size();
-            card = deck.get((int)Math.random()*(taille));
-            main.add(card);
-            deck.remove(card);
-        }
-    }
 
-    public void defausser(){
 
-    }*/
 
-    public int getCoins() {
-        return coins;
-    }
 
-    public void setCoins(int coins) {
-        this.coins = coins;
-    }
+    //operations sur la main
 
-    public int getNbTourAction() {
-        return nbTourAction;
-    }
-
-    public void setNbTourAction(int nbTourAction) {
-        this.nbTourAction = nbTourAction;
-    }
-
-    public int getNbTourAchat() {
-        return nbTourAchat;
-    }
-
-    public void setNbTourAchat(int nbTourAchat) {
-        this.nbTourAchat = nbTourAchat;
-    }
-
-    public int getSizeMain(){
-        return main.size();
-    }
 
     public void removeCarteMainEcartee(Cards c){
         main.remove(c);
     }
 
-    public Cards getCarteMain(int index){
-        return main.get(index);
-    }
     public void removeCarteMain(int index){
         Cards c = main.remove(index);
         defausse.add(c);
     }
 
-    public int getSizeDeck(){
-        return deck.size();
-    }
 
-    public Cards getCarteDeck(int index){
-        return deck.get(index);
-    }
 
-    public int getSizeDefausse(){
-        return defausse.size();
-    }
 
-    public void ajoutCarteMain(Cards c){
-        main.add(c);
-    }
+
+
+    //mouvements de carte
 
     public void piocher(int valeur) {
         Cards card;
@@ -156,6 +117,8 @@ public class Joueur
 
 
 
+
+    //methode static de creation de carte
     public static List<Cards> createDeckDepart(){
         List<Cards> deck = new ArrayList<Cards>();
 
@@ -172,19 +135,63 @@ public class Joueur
         return deck;
     }
 
-    public List<Cards> getDeck(){
-        return deck;
-    }
+
+
+
+    //get et set
 
     public String getNomJoueur() {
         return nomJoueur;
     }
-
     public String getCheminImageCarte(int index){
         return main.get(index).getCheminImage();
     }
-
     public int getNumero() {
         return numero;
+    }
+
+    public int getCoins() {
+        return coins;
+    }
+    public void setCoins(int coins) {
+        this.coins = coins;
+    }
+
+    public int getNbTourAction() {
+        return nbTourAction;
+    }
+    public void setNbTourAction(int nbTourAction) {
+        this.nbTourAction = nbTourAction;
+    }
+
+    public int getNbTourAchat() {
+        return nbTourAchat;
+    }
+    public void setNbTourAchat(int nbTourAchat) {
+        this.nbTourAchat = nbTourAchat;
+    }
+
+    public List<Cards> getDeck(){
+        return deck;
+    }
+    public int getSizeDeck(){
+        return deck.size();
+    }
+    public Cards getCarteDeck(int index){
+        return deck.get(index);
+    }    //il faudra voir si c'est utile
+
+    public Cards getCarteMain(int index){
+        return main.get(index);
+    }
+    public void ajoutCarteMain(Cards c){
+        main.add(c);
+    }
+    public int getSizeMain(){
+        return main.size();
+    }
+
+    public int getSizeDefausse(){
+        return defausse.size();
     }
 }

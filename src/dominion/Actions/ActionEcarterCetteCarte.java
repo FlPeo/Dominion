@@ -3,8 +3,6 @@ package dominion.Actions;
 import dominion.ActionCards;
 import dominion.Partie;
 
-import java.util.ArrayList;
-
 /**
  * Created by Flo on 01/12/2016.
  */
@@ -16,7 +14,6 @@ public class ActionEcarterCetteCarte extends Action{
     }
 
     public void action(){
-        ArrayList<ActionCards> listeUnTypeCarteAction;
         boolean defausse = false;
         int id;
         int indexPileVide = -1;

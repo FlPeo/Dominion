@@ -24,17 +24,6 @@ public class CoinsCards extends Cards
         }
     }
 
-    public String getCheminImage(){
-        return super.getCheminImage() + "Tresor/Tresor" + id + ".jpg";
-    }
-
-    public int getPointCoin() {
-        return pointCoin;
-    }
-
-    public void setPointCoin(int pointCoin) {
-        this.pointCoin = pointCoin;
-    }
 
     public static ArrayList<ArrayList<CoinsCards>> creerCartesTresor(int nbJoueurs) {
         ArrayList<ArrayList<CoinsCards>> listeCartes = new ArrayList<ArrayList<CoinsCards>>();
@@ -69,11 +58,11 @@ public class CoinsCards extends Cards
         return true;
     }
 
-    public static int[] creerReservesCartesTresor(int nbJoueurs) {
-        int[] reservesCartesTresor = new int[3];
-        reservesCartesTresor[0] = 60 - 7*nbJoueurs;
-        reservesCartesTresor[1] = 40;
-        reservesCartesTresor[2] = 30;
-        return reservesCartesTresor;
+    public String getCheminImage(){
+        return super.getCheminImage() + "Tresor/Tresor" + id + ".jpg";
+    }
+
+    public int getPointCoin() {
+        return pointCoin;
     }
 }
