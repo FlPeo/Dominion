@@ -99,6 +99,10 @@ public class Joueur
         return main.size();
     }
 
+    public void removeCarteMainEcartee(Cards c){
+        main.remove(c);
+    }
+
     public Cards getCarteMain(int index){
         return main.get(index);
     }

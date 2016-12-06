@@ -250,7 +250,20 @@ public class Partie
         return listeCartesTresor.get(i).size();
     }
 
-    public boolean tryGetCarteVictoire(int i) {
+    public int getIdPileCarteAction(int index){
+        if(getNbRestantCartesAction(index) == 0){
+            return -1;
+        }
+
+        return listeCartesAction.get(index).get(0).getId();
+    }
+
+    public void ecarteCarteActionSurPile(ActionCards carte, int index){
+        joueurCourrant.removeCarteMainEcartee(carte);
+        listeCartesAction.get(index).add(carte);
+    }
+
+    public boolean tryAchatCarteVictoire(int i) {
         Cards c = listeCartesVictoire.get(i).get(listeCartesVictoire.get(i).size() - 1);
         if(c.getCout()>joueurCourrant.getCoins()){
             return false;
@@ -261,7 +274,7 @@ public class Partie
         return true;
     }
 
-    public boolean tryGetCarteTresor(int i) {
+    public boolean tryAchatCarteTresor(int i) {
         Cards c = listeCartesTresor.get(i).get(listeCartesTresor.get(i).size() - 1);
         if(c.getCout()>joueurCourrant.getCoins()){
             return false;
@@ -272,7 +285,7 @@ public class Partie
         return true;
     }
 
-    public boolean tryGetCarteAction(int i) {
+    public boolean tryAchatCarteAction(int i) {
         Cards c = listeCartesAction.get(i).get(listeCartesAction.get(i).size() - 1);
         if(c.getCout()>joueurCourrant.getCoins()){
             return false;

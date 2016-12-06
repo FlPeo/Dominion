@@ -64,16 +64,16 @@ public class Control_Partie implements ActionListener{
 
             boolean possible = false;
             if(isCarteVictoire(i)){
-                possible = modelPartie.tryGetCarteVictoire(i);
+                possible = modelPartie.tryAchatCarteVictoire(i);
 
             }
             else if(isCarteAction(i)){
                 i-=4;
-                possible = modelPartie.tryGetCarteAction(i);
+                possible = modelPartie.tryAchatCarteAction(i);
             }
             else if(isCarteTresor(i)){
                 i-=14;
-                possible = modelPartie.tryGetCarteTresor(i);
+                possible = modelPartie.tryAchatCarteTresor(i);
             }
 
             if(possible){
