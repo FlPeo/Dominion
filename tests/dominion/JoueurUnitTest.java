@@ -16,7 +16,7 @@ public class JoueurUnitTest {
     public void testMainToDefausse_DefausseToDeck(){
         Joueur[] joueurs = new Joueur[1];
         Partie p = creerPartie(joueurs);
-        joueurs[0] = new Joueur("joueur", creerCartesPourTest(p));
+        joueurs[0] = new Joueur("joueur", creerCartesPourTest(p), 0);
         p.setJoueurs(joueurs);
 
         Assert.assertEquals(0, joueurs[0].getSizeMain());
@@ -43,7 +43,7 @@ public class JoueurUnitTest {
     public void testPiocherSi0CartesDeck(){
         Joueur[] joueurs = new Joueur[1];
         Partie p = creerPartie(joueurs);
-        joueurs[0] = new Joueur("joueur", creerCartesPourTest(p));
+        joueurs[0] = new Joueur("joueur", creerCartesPourTest(p), 0);
         p.setJoueurs(joueurs);
 
         Assert.assertEquals(0, joueurs[0].getSizeMain());

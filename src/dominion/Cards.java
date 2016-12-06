@@ -9,8 +9,8 @@ import java.util.List;
  * Created by sakalypse on 20/11/16.
  */
 public abstract class Cards {
-    private int cout;
-    private int id;
+    protected int cout;
+    protected int id;
 
     public Cards(int id){
         this.id = id;
@@ -31,6 +31,22 @@ public abstract class Cards {
 
     public int getId() {
         return id;
+    }
+
+    public String getCheminImage(){
+        return "Images/";
+    }
+
+    public boolean isCarteAction(){
+        return false;
+    }
+
+    public boolean isCarteVictoire(){
+        return false;
+    }
+
+    public boolean isCarteTresor(){
+        return false;
     }
     /*List<Cards> deck;
 

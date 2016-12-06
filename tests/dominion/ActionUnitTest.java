@@ -21,7 +21,7 @@ public class ActionUnitTest {
     public void testPlusXCoins(){
         Joueur[] joueurs = new Joueur[1];
         Partie p = creerPartie(joueurs);
-        joueurs[0] = new Joueur("joueur", creerCartesPourTest(p));
+        joueurs[0] = new Joueur("joueur", creerCartesPourTest(p), 0);
         p.setJoueurs(joueurs);
 
         Action a = new ActionAddXCoins(p, 2);
@@ -38,7 +38,7 @@ public class ActionUnitTest {
     public void testPlusXActions(){
         Joueur[] joueurs = new Joueur[1];
         Partie p = creerPartie(joueurs);;
-        joueurs[0] = new Joueur("joueur", creerCartesPourTest(p));
+        joueurs[0] = new Joueur("joueur", creerCartesPourTest(p), 0);
         p.setJoueurs(joueurs);
 
         Action a = new ActionAddXActions(p, 1);
@@ -55,7 +55,7 @@ public class ActionUnitTest {
     public void testPlusXAchats(){
         Joueur[] joueurs = new Joueur[1];
         Partie p = creerPartie(joueurs);;
-        joueurs[0] = new Joueur("joueur", creerCartesPourTest(p));
+        joueurs[0] = new Joueur("joueur", creerCartesPourTest(p), 0);
         p.setJoueurs(joueurs);
 
 
@@ -72,7 +72,7 @@ public class ActionUnitTest {
     public void testPlusXCartes(){
         Joueur[] joueurs = new Joueur[1];
         Partie p = creerPartie(joueurs);;
-        joueurs[0] = new Joueur("joueur", creerCartesPourTest(p));
+        joueurs[0] = new Joueur("joueur", creerCartesPourTest(p), 0);
         p.setJoueurs(joueurs);
 
 

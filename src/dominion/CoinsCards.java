@@ -24,6 +24,9 @@ public class CoinsCards extends Cards
         }
     }
 
+    public String getCheminImage(){
+        return super.getCheminImage() + "Tresor/Tresor" + id + ".jpg";
+    }
 
     public int getPointCoin() {
         return pointCoin;
@@ -60,6 +63,10 @@ public class CoinsCards extends Cards
 
 
         return listeCartes;
+    }
+
+    public boolean isCarteTresor(){
+        return true;
     }
 
     public static int[] creerReservesCartesTresor(int nbJoueurs) {

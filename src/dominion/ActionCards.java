@@ -20,16 +20,31 @@ public class ActionCards extends Cards {
      **/
 
     private List<Action> listeActions;
+    private boolean carteADefausserApresAction;
+
+
+    private static ActionCards carteBoucheTrou = new ActionCards(5, new ArrayList<Action>(), 3);
+    //Supprimer la carte bouche trou des que possible ! (quand on aura fait toutes les cartes action
+
 
     public ActionCards(int id, List<Action> actions, int cout){   //id = numero de l'img de la carte
         super(id, cout);
         listeActions = actions;
+        carteADefausserApresAction = true;   //false que si la carte doit etre ecartée (concerne une seule carte action normalement)
     }
 
     public void action(){
         for(Action action : listeActions){
             action.action();
         }
+    }
+
+    public String getCheminImage(){
+        return super.getCheminImage() + "Action/Action" + id + ".jpg";
+    }
+
+    public boolean isCarteAction(){
+        return true;
     }
 
 
@@ -44,6 +59,12 @@ public class ActionCards extends Cards {
 
     private static ActionCards[] creer25CartesAction(Partie p) {
         ActionCards[] listeCartesActions = new ActionCards[25];
+        for(int i = 0; i< listeCartesActions.length ; i++){
+            listeCartesActions[i] = carteBoucheTrou;
+        }
+
+
+
         List<Action> listeActions = new ArrayList<Action>();
 
         listeActions.add(new ActionAddXCartes(p, 1));    //carte marché
@@ -97,6 +118,14 @@ public class ActionCards extends Cards {
             listeCartes.add(cards);
         }
         return listeCartes;
+    }
+
+    public void setCarteADefausserApresAction() {
+        this.carteADefausserApresAction = false;
+    }
+
+    public boolean isCarteADefausserApresAction() {
+        return this.carteADefausserApresAction;
     }
 
     /*public static int[] creerReservesCartesAction(ActionCards[] cartesAction, int nbJoueurs) {

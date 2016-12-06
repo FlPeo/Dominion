@@ -13,12 +13,13 @@ public class Partie
     private Joueur joueurCourrant;
 
     //listeDeToutesLesPiles sera très utile pour verifier si 3 des piles sont vide
-    private List<List<Cards>> listeDeToutesLesPiles;
+    private ArrayList<ArrayList<ArrayList<Cards>>> listeDeToutesLesPiles;
 
-    private List<ArrayList<VictoireCards>> listeCartesVictoire;
-    private List<ArrayList<CoinsCards>> listeCartesTresor;
-    private List<ArrayList<ActionCards>> listeCartesAction;
-    private ArrayList<ArrayList<ActionCards>> cartesAction;
+    private ArrayList<ArrayList<VictoireCards>> listeCartesVictoire;
+    private ArrayList<ArrayList<CoinsCards>> listeCartesTresor;
+    private ArrayList<ArrayList<ActionCards>> listeCartesAction;
+
+    private EtapesTour etapesTour;
 
     /*private List<Cards> pileCuivre;
     private List<Cards> pileArgent;
@@ -44,7 +45,8 @@ public class Partie
         Joueur[] joueurs = new Joueur[nomJoueurs.length];
 
         for (int i = 0; i < nomJoueurs.length; i++) {
-            joueurs[i] = new Joueur(nomJoueurs[i], Joueur.createDeckDepart());
+            joueurs[i] = new Joueur(nomJoueurs[i], Joueur.createDeckDepart(), i);
+            joueurs[i].piocher(5);
         }
 
 
@@ -54,7 +56,7 @@ public class Partie
         ArrayList<ArrayList<CoinsCards>> cartesTresor = CoinsCards.creerCartesTresor(nomJoueurs.length);
 
 
-        Partie p = new Partie(cartesVictoire, cartesTresor);
+        Partie p = new Partie(EtapesTour.ACTION, cartesVictoire, cartesTresor);
         ArrayList<ArrayList<ActionCards>> cartesAction = ActionCards.creer10CartesAction(p, nomJoueurs.length);
 
 
@@ -68,12 +70,17 @@ public class Partie
 
 
 
-    public Partie(ArrayList<ArrayList<VictoireCards>> cartesVictoire, ArrayList<ArrayList<CoinsCards>> cartesTresor) {
+    public Partie(EtapesTour etapesTour, ArrayList<ArrayList<VictoireCards>> cartesVictoire,
+                  ArrayList<ArrayList<CoinsCards>> cartesTresor) {
 
-        listeDeToutesLesPiles = new ArrayList<List<Cards>>();
+        this.etapesTour = etapesTour;
 
         this.listeCartesVictoire= cartesVictoire;
         this.listeCartesTresor = cartesTresor;
+
+        /*listeDeToutesLesPiles = new ArrayList<>();
+        listeDeToutesLesPiles.add(listeCartesVictoire);
+        listeDeToutesLesPiles.add(listeCartesTresor);*/
         //initReservesCartesAction();
     }
 
@@ -124,14 +131,27 @@ public class Partie
      * ou si 3 piles sont vide
      * @return true si la partie est terminé
      */
-    private boolean finDePartie() {
+    public boolean finDePartie() {
         if (listeCartesVictoire.get(2).size()==0) return true;
 
 
         int nombrePileVide = 0;
-        for (int i=0; i<listeDeToutesLesPiles.size(); i++)
-            if (listeDeToutesLesPiles.get(i).size()==0)
+
+        for(ArrayList<ActionCards> array : listeCartesAction){
+            if (array.size()==0)
                 nombrePileVide++;
+        }
+
+        for(ArrayList<CoinsCards> array : listeCartesTresor){
+            if (array.size()==0)
+                nombrePileVide++;
+        }
+
+        for(ArrayList<VictoireCards> array : listeCartesVictoire){
+            if (array.size()==0)
+                nombrePileVide++;
+        }
+
         if (nombrePileVide>=3) return true;
 
 
@@ -168,7 +188,102 @@ public class Partie
         }
     }
 
+    public void finTourAction(){
+        joueurCourrant.reduitTourAction();
+        if(joueurCourrant.getNbTourAction() == 0){
+            etapesTour = EtapesTour.ACHAT;
+            joueurCourrant.setNbTourAction(1);
+
+            Cards c;
+            for(int i = 0; i<joueurCourrant.getSizeMain() ; i++){
+                c = joueurCourrant.getCarteMain(i);
+                if(c.isCarteTresor()){
+                    joueurCourrant.addCoin(((CoinsCards)c).getPointCoin());
+                }
+            }
+        }
+    }
+
+    public boolean finTourAchat(){
+        joueurCourrant.reduitTourAchat();
+        boolean finAchat = joueurCourrant.getNbTourAchat() == 0;
+        if(finAchat){
+            etapesTour = EtapesTour.ACTION;
+            joueurCourrant.setNbTourAchat(1);
+            joueurCourrant.setCoins(0);
+            joueurCourrant.mainToDefausse();
+            joueurCourrant.piocher(5);
+
+            int idJoueurSuiv = (joueurCourrant.getNumero() == getNbJoueurs()-1)?0:joueurCourrant.getNumero()+1;
+            joueurCourrant = joueurs[idJoueurSuiv];
+
+        }
+        return finAchat;
+    }
+
     public void setCartesAction(ArrayList<ArrayList<ActionCards>> cartesAction) {
-        this.cartesAction = cartesAction;
+        this.listeCartesAction = cartesAction;
+        //listeDeToutesLesPiles.add(listeCartesAction);
+    }
+
+    public String getIdAction(int index){
+        return ""+listeCartesAction.get(index).get(0).getId();
+    }
+
+    public String getNomJoueur(int index){
+        return ""+joueurs[index].getNomJoueur();
+    }
+
+    public EtapesTour getEtapesTour() {
+        return etapesTour;
+    }
+
+    public int getNbRestantCartesVictoire(int i) {
+        return listeCartesVictoire.get(i).size();
+    }
+
+    public int getNbRestantCartesAction(int i) {
+        return listeCartesAction.get(i).size();
+    }
+
+    public int getNbRestantCartesTresor(int i) {
+        return listeCartesTresor.get(i).size();
+    }
+
+    public boolean tryGetCarteVictoire(int i) {
+        Cards c = listeCartesVictoire.get(i).get(listeCartesVictoire.get(i).size() - 1);
+        if(c.getCout()>joueurCourrant.getCoins()){
+            return false;
+        }
+        listeCartesVictoire.get(i).remove(c);
+        joueurCourrant.addCoin(-c.getCout());
+        joueurCourrant.ajoutCarteMain(c);
+        return true;
+    }
+
+    public boolean tryGetCarteTresor(int i) {
+        Cards c = listeCartesTresor.get(i).get(listeCartesTresor.get(i).size() - 1);
+        if(c.getCout()>joueurCourrant.getCoins()){
+            return false;
+        }
+        listeCartesTresor.get(i).remove(c);
+        joueurCourrant.addCoin(-c.getCout());
+        joueurCourrant.ajoutCarteMain(c);
+        return true;
+    }
+
+    public boolean tryGetCarteAction(int i) {
+        Cards c = listeCartesAction.get(i).get(listeCartesAction.get(i).size() - 1);
+        if(c.getCout()>joueurCourrant.getCoins()){
+            return false;
+        }
+        listeCartesAction.get(i).remove(c);
+        joueurCourrant.addCoin(-c.getCout());
+        joueurCourrant.ajoutCarteMain(c);
+        return true;
+    }
+
+    public int getNbJoueurs(){
+        return joueurs.length;
     }
 }

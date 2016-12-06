@@ -10,6 +10,8 @@ import java.util.List;
  */
 public class Joueur
 {
+    private int numero;  //numero ordre pour partie. commence à 0
+
     private int coins;
     private int nbTourAction;
     private int nbTourAchat;
@@ -19,7 +21,8 @@ public class Joueur
     private List<Cards> deck; // 0=fin, taille-1=debut
     private List<Cards> defausse;
 
-    Joueur(String nomJoueur, List<Cards> deck){
+    Joueur(String nomJoueur, List<Cards> deck, int numero){
+        this.numero = numero;
         this.nomJoueur = nomJoueur;
         this.deck= deck;
         main = new ArrayList<Cards>();
@@ -43,6 +46,14 @@ public class Joueur
     public int addTourAchat(int nbAjout){
         nbTourAchat += nbAjout;
         return nbTourAchat;
+    }
+
+    public void reduitTourAction(){
+        nbTourAction--;
+    }
+
+    public void reduitTourAchat(){
+        nbTourAchat--;
     }
 
     /*public void piocher(int nbCarte){
@@ -91,6 +102,10 @@ public class Joueur
     public Cards getCarteMain(int index){
         return main.get(index);
     }
+    public void removeCarteMain(int index){
+        Cards c = main.remove(index);
+        defausse.add(c);
+    }
 
     public int getSizeDeck(){
         return deck.size();
@@ -102,6 +117,10 @@ public class Joueur
 
     public int getSizeDefausse(){
         return defausse.size();
+    }
+
+    public void ajoutCarteMain(Cards c){
+        main.add(c);
     }
 
     public void piocher(int valeur) {
@@ -131,6 +150,8 @@ public class Joueur
         main.clear();
     }
 
+
+
     public static List<Cards> createDeckDepart(){
         List<Cards> deck = new ArrayList<Cards>();
 
@@ -142,10 +163,24 @@ public class Joueur
             deck.add(new VictoireCards(0));
         }
 
+        Collections.shuffle(deck);
+
         return deck;
     }
 
     public List<Cards> getDeck(){
         return deck;
+    }
+
+    public String getNomJoueur() {
+        return nomJoueur;
+    }
+
+    public String getCheminImageCarte(int index){
+        return main.get(index).getCheminImage();
+    }
+
+    public int getNumero() {
+        return numero;
     }
 }

@@ -1,26 +1,37 @@
 package dominion;
 
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.Color;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
  * Created by florian on 13/11/2016.
  */
 public class View_Partie  extends JFrame {
+    public static final int NB_BOUTONS_CHOIX = 3;
+
 
     private int xSize, ySize;
     private Partie modelePartie;
 
-    private JLabel labelJoueur1;
-    private JLabel labelJoueur2;
+    private JLabel[] labelsJoueurs;
+    /*private JLabel labelJoueur1;
+    private JLabel labelJoueur2;*/
 
     private JButton[] boutonsVictoire;
     private JButton[] boutonsAction;
-    private ArrayList<JButton> boutonsCartesJoueur;
-
     private JButton[] boutonsTresor;
+
+    private ArrayList<JButton> boutonsCartesJoueur;
     private JButton[] boutonsChoix;
+    private JPanel panelCartesMain;
+
+
+    private Color couleurJoueurCourrant;
+    private Color couleurJoueurDefaut;
 
 
     /**
@@ -30,6 +41,8 @@ public class View_Partie  extends JFrame {
     {
         super();
         modelePartie = partie;
+        couleurJoueurCourrant = Color.red;
+        couleurJoueurDefaut = Color.black;
 
         Toolkit tk = Toolkit.getDefaultToolkit();
         xSize = (int) tk.getScreenSize().getWidth();
@@ -40,14 +53,14 @@ public class View_Partie  extends JFrame {
         creerWidgetPartie();
 
         setUndecorated(true);
-
-
         setTitle("dominion.Dominion");
         setResizable(false);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         display();
+        setImagesBoutons();
     }
+
 
     /**
      * Initialise les attributs de la classe
@@ -55,37 +68,54 @@ public class View_Partie  extends JFrame {
     private void initAttribut()
     {
         int i;
-        labelJoueur1 = new JLabel("J1");
-        labelJoueur2 = new JLabel("J2");
-        labelJoueur1.setHorizontalAlignment(JLabel.CENTER);
-        labelJoueur2.setHorizontalAlignment(JLabel.CENTER);
+        labelsJoueurs = new JLabel[2];
+        labelsJoueurs[0] = new JLabel(modelePartie.getNomJoueur(0));
+        labelsJoueurs[0].setForeground(couleurJoueurCourrant);
+        labelsJoueurs[1] = new JLabel(modelePartie.getNomJoueur(1));
 
-        boutonsVictoire = new JButton[3];
-        for(i=0 ; i<3 ;i++){
-            boutonsVictoire[i] = new JButton("Vict" + i);
+        labelsJoueurs[0].setHorizontalAlignment(JLabel.CENTER);
+        labelsJoueurs[1].setHorizontalAlignment(JLabel.CENTER);
+
+        boutonsVictoire = new JButton[4];
+
+        int j=0;
+        for(i=0 ; i<4 ;i++){
+            boutonsVictoire[i] = new JButton();
+            boutonsVictoire[i].setActionCommand(""+j);
+            j++;
         }
 
         boutonsAction = new JButton[10];
         for(i=0 ; i<10 ;i++){
-            boutonsAction[i] = new JButton("Act" + i);
+            boutonsAction[i] = new JButton();
+            boutonsAction[i].setActionCommand(""+j);
+            j++;
         }
 
-
-        boutonsCartesJoueur = new ArrayList<JButton>();
-        for(i=0 ; i<5 ;i++){
-            boutonsCartesJoueur.add(new JButton("Car" + i));
-        }
-
-        boutonsTresor = new JButton[4];
-        for(i=0 ; i<4 ;i++){
-            boutonsTresor[i] = new JButton("Tres" + i);
+        boutonsTresor = new JButton[3];
+        for(i=0 ; i<3 ;i++){
+            boutonsTresor[i] = new JButton();
+            boutonsTresor[i].setActionCommand(""+j);
+            j++;
         }
 
 
 
         boutonsChoix = new JButton[3];
-        for(i=0 ; i<3 ;i++){
-            boutonsChoix[i] = new JButton("Ch" + i);
+        boutonsChoix[0] = new JButton("Passer cette phase de jeu");
+        boutonsChoix[0].setActionCommand(""+j);
+        j++;
+        for(i=1 ; i<3 ;i++){    //enlever un bouton de choix = changer des methodes dans Controleur de Partie
+            boutonsChoix[i] = new JButton();
+            boutonsChoix[i].setActionCommand(""+j);
+            j++;
+        }
+
+        boutonsCartesJoueur = new ArrayList<JButton>();
+        for(i=0 ; i<5 ;i++){
+            boutonsCartesJoueur.add(new JButton());
+            boutonsCartesJoueur.get(i).setActionCommand(""+j);
+            j++;
         }
     }
 
@@ -127,7 +157,7 @@ public class View_Partie  extends JFrame {
         panelCartesTresor.setLayout(layoutTresor);
         panelCartesTresor.setBackground(Color.GREEN);
 
-        for(i=0 ; i<4; i++){
+        for(i=0 ; i<boutonsTresor.length; i++){
             JPanel p = new JPanel(new BorderLayout());
             p.add(boutonsTresor[i], BorderLayout.CENTER);
             p.add(Box.createHorizontalStrut(15), BorderLayout.EAST);
@@ -143,7 +173,7 @@ public class View_Partie  extends JFrame {
         panelChoix.setLayout(layoutChoix);
         panelChoix.setBackground(Color.BLUE);
 
-        for(i=0 ; i<3; i++){
+        for(i=0 ; i<boutonsChoix.length; i++){
             JPanel p = new JPanel(new BorderLayout());
             p.add(boutonsChoix[i], BorderLayout.CENTER);
             p.add(Box.createHorizontalStrut(15), BorderLayout.EAST);
@@ -185,7 +215,7 @@ public class View_Partie  extends JFrame {
         JPanel panelCentreCartesAction = new JPanel(new GridLayout(2,5));
 
 
-        for(i=0 ; i<3; i++){
+        for(i=0 ; i<boutonsVictoire.length; i++){
             JPanel p = new JPanel(new BorderLayout());
             p.add(boutonsVictoire[i], BorderLayout.CENTER);
             p.add(Box.createHorizontalStrut(15), BorderLayout.EAST);
@@ -204,17 +234,17 @@ public class View_Partie  extends JFrame {
 
 
         JPanel panelCartesJoueur = new JPanel(new BorderLayout());
-        JPanel conteneurCartes = new JPanel(new GridLayout(1,5));
-        conteneurCartes.setSize(new Dimension(-1, ySize/2 - 30));
+        panelCartesMain = new JPanel(new GridLayout(1,5));
+        panelCartesMain.setSize(new Dimension(-1, ySize/2 - 30));
         panelCartesJoueur.setBackground(Color.PINK);
 
         for(i=0 ; i<5 ; i++){
-            conteneurCartes.add(boutonsCartesJoueur.get(i));
+            panelCartesMain.add(boutonsCartesJoueur.get(i));
         }
         panelCartesJoueur.add(Box.createHorizontalStrut(15), BorderLayout.EAST);
         panelCartesJoueur.add(Box.createHorizontalStrut(15), BorderLayout.WEST);
         panelCartesJoueur.add(Box.createVerticalStrut(15), BorderLayout.NORTH);
-        panelCartesJoueur.add(conteneurCartes, BorderLayout.CENTER);
+        panelCartesJoueur.add(panelCartesMain, BorderLayout.CENTER);
 
 
         panelCentralHaut.add(panelCartesVictoire);
@@ -250,8 +280,8 @@ public class View_Partie  extends JFrame {
 
 
         JPanel p1 = new JPanel(new BorderLayout()), p2 = new JPanel(new BorderLayout());
-        p1.add(labelJoueur1, BorderLayout.CENTER);
-        p2.add(labelJoueur2, BorderLayout.CENTER);
+        p1.add(labelsJoueurs[0], BorderLayout.CENTER);
+        p2.add(labelsJoueurs[1], BorderLayout.CENTER);
 
 
 
@@ -263,6 +293,38 @@ public class View_Partie  extends JFrame {
         return panelGauche;
     }
 
+    private void setImagesBoutons() {
+        int i;
+        ImageIcon img;
+
+        for(i=0 ; i<boutonsAction.length ;i++){
+
+            img = new ImageIcon(new ImageIcon("Images/Action/Action"+modelePartie.getIdAction(i)+".jpg").getImage()
+                    .getScaledInstance(boutonsAction[i].getWidth(), boutonsAction[i].getHeight(), Image.SCALE_DEFAULT));
+            boutonsAction[i].setIcon(img);
+        }
+
+
+        for(i=0 ; i<boutonsVictoire.length ;i++){
+            img = new ImageIcon(new ImageIcon("Images/Victoire/Victoire"+i+".jpg").getImage()
+                    .getScaledInstance(boutonsVictoire[i].getWidth(), boutonsVictoire[i].getHeight(), Image.SCALE_DEFAULT));
+            boutonsVictoire[i].setIcon(img);
+        }
+
+        for(i=0 ; i<boutonsTresor.length ;i++){
+            img = new ImageIcon(new ImageIcon("Images/Tresor/Tresor"+i+".jpg").getImage()
+                    .getScaledInstance(boutonsTresor[i].getWidth(), boutonsTresor[i].getHeight(), Image.SCALE_DEFAULT));
+            boutonsTresor[i].setIcon(img);
+        }
+
+
+        for(i=0 ; i<boutonsCartesJoueur.size() ;i++){
+            img = new ImageIcon(new ImageIcon(modelePartie.getJoueurCourrant().getCheminImageCarte(i)).getImage()
+                    .getScaledInstance(boutonsCartesJoueur.get(0).getWidth(), boutonsCartesJoueur.get(0).getHeight(), Image.SCALE_DEFAULT));
+            boutonsCartesJoueur.get(i).setIcon(img);
+        }
+    }
+
     /**
      * display
      * Permet d'afficher la fenetre
@@ -272,8 +334,86 @@ public class View_Partie  extends JFrame {
     }
 
 
+    void setActionListener(Control_Partie control){
+        for(JButton b : boutonsVictoire){
+            b.addActionListener(control);
+        }
+
+        for(JButton b : boutonsAction){
+            b.addActionListener(control);
+        }
+
+        for(JButton b : boutonsCartesJoueur){
+            b.addActionListener(control);
+        }
+
+        for(JButton b : boutonsChoix){
+            b.addActionListener(control);
+        }
+
+        for(JButton b : boutonsTresor){
+            b.addActionListener(control);
+        }
 
 
 
+    }
 
+
+    public void majVue() {
+        int i;
+        for(i = 0 ; i<3 ; i++){
+            if(modelePartie.getNbRestantCartesTresor(i) == 0){
+                boutonsTresor[i].setIcon(null);
+                boutonsTresor[i].setText("Pile vide");
+                boutonsTresor[i].setEnabled(false);
+            }
+        }
+
+        for(i = 0 ; i<4 ; i++){
+            if(modelePartie.getNbRestantCartesVictoire(i) == 0){
+                boutonsVictoire[i].setIcon(null);
+                boutonsVictoire[i].setText("Pile vide");
+                boutonsVictoire[i].setEnabled(false);
+            }
+        }
+
+        for(i = 0 ; i<10 ; i++){
+            if(modelePartie.getNbRestantCartesAction(i) == 0){
+                boutonsAction[i].setIcon(null);
+                boutonsAction[i].setText("Pile vide");
+                boutonsAction[i].setEnabled(false);
+            }
+        }
+
+        ActionListener listener = boutonsCartesJoueur.get(0).getActionListeners()[0];
+        int height = boutonsCartesJoueur.get(0).getHeight();
+        int width = boutonsCartesJoueur.get(0).getWidth();
+        boutonsCartesJoueur = new ArrayList<JButton>();
+        JButton carteMain;
+        ImageIcon img;
+        int j = 17+NB_BOUTONS_CHOIX;
+        panelCartesMain.removeAll();
+        for(i=0 ; i<modelePartie.getJoueurCourrant().getSizeMain() ;i++){
+            carteMain = new JButton();
+            carteMain.addActionListener(listener);
+            img = new ImageIcon(new ImageIcon(modelePartie.getJoueurCourrant().getCheminImageCarte(i)).getImage()
+                    .getScaledInstance(width, height, Image.SCALE_DEFAULT));
+            carteMain.setActionCommand(""+j);
+            j++;
+
+            boutonsCartesJoueur.add(carteMain);
+            boutonsCartesJoueur.get(i).setIcon(img);
+            panelCartesMain.add(carteMain);
+        }
+        validate();
+    }
+
+    public void changeJoueur() {
+        int idJoueur = modelePartie.getJoueurCourrant().getNumero();
+        int idJoueurPrec = (idJoueur == 0)?modelePartie.getNbJoueurs()-1:idJoueur-1;
+
+        labelsJoueurs[idJoueurPrec].setForeground(couleurJoueurDefaut);
+        labelsJoueurs[idJoueur].setForeground(couleurJoueurCourrant);
+    }
 }
