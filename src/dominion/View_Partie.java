@@ -18,8 +18,6 @@ public class View_Partie  extends JFrame {
     private Partie modelePartie;
 
     private JLabel[] labelsJoueurs;
-    /*private JLabel labelJoueur1;
-    private JLabel labelJoueur2;*/
 
     private JButton[] boutonsVictoire;
     private JButton[] boutonsAction;

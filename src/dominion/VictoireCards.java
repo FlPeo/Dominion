@@ -27,21 +27,7 @@ public class VictoireCards extends Cards {
         }
     }
 
-    public String getCheminImage(){
-        return super.getCheminImage() + "Victoire/Victoire" + id + ".jpg";
-    }
 
-    public int getPointVictoire() {
-        return pointVictoire;
-    }
-
-    public void setPointVictoire(int pointVictoire) {
-        this.pointVictoire = pointVictoire;
-    }
-
-    public boolean isCarteVictoire(){
-        return true;
-    }
 
     public static ArrayList<ArrayList<VictoireCards>> creerCartesVictoire(int nbJoueurs) {
         ArrayList<ArrayList<VictoireCards>> listeCartes = new ArrayList<ArrayList<VictoireCards>>();
@@ -62,5 +48,18 @@ public class VictoireCards extends Cards {
         listeCartes.add(listeUneSorteCarte);
 
         return listeCartes;
+    }
+
+
+
+    //get et set
+    public String getCheminImage(){
+        return super.getCheminImage() + "Victoire/Victoire" + id + ".jpg";
+    }
+    public int getPointVictoire() {
+        return pointVictoire;
+    }
+    public boolean isCarteVictoire(){
+        return true;
     }
 }
