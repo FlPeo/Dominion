@@ -97,4 +97,26 @@ public class JoueurUnitTest {
         Assert.assertEquals(0, joueurs[0].getSizeDeck());
         Assert.assertEquals(1, joueurs[0].getSizeDefausse());
     }
+
+    @Test
+    public void testPiocherMalediction(){
+        Joueur[] joueurs = new Joueur[1];
+        Partie p = creerPartie();
+        ArrayList<Cards> cards = new ArrayList<>();
+        joueurs[0] = new Joueur("joueur", cards, 0);
+        p.setJoueurs(joueurs);
+        joueurs[0].piocherMalediction();
+        Assert.assertEquals(1, joueurs[0].getSizeMain());
+    }
+
+    @Test
+    public void testDeckToDefausse(){
+        Joueur[] joueurs = new Joueur[1];
+        Partie p = creerPartie();
+        joueurs[0] = new Joueur("joueur", creerCartesPourTest(p), 0);
+        p.setJoueurs(joueurs);
+
+        joueurs[0].deckToDefausse();
+        Assert.assertEquals(0,joueurs[0].getSizeDeck());
+    }
 }

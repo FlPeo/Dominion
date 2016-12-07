@@ -1,5 +1,6 @@
 package dominion;
 
+import javax.sql.rowset.CachedRowSet;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -101,6 +102,13 @@ public class Joueur
         }
     }
 
+    public void piocherMalediction() {
+        if (!douveDansMain()) {
+            VictoireCards cardsMalediction = new VictoireCards(3);
+            main.add(cardsMalediction);
+        }
+    }
+
     public void defausseToDeck(){
         Collections.shuffle(defausse);
         for(Cards c : defausse){
@@ -116,7 +124,13 @@ public class Joueur
         main.clear();
     }
 
-
+    // Envoie le deck entier à la défausse
+    public void deckToDefausse(){
+        for(Cards c : deck){
+            defausse.add(c);
+        }
+        deck.clear();
+    }
 
 
     //methode static de creation de carte
@@ -200,4 +214,13 @@ public class Joueur
     public List<Cards> getMain(){
         return main;
     }
+
+    public boolean douveDansMain(){
+        for (Cards c : main){
+            if (c.getId()==7) return true;
+        }
+        return false;
+    }
+
+
 }

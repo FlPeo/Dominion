@@ -16,6 +16,7 @@ public class Partie
     private ArrayList<ArrayList<VictoireCards>> listeCartesVictoire;
     private ArrayList<ArrayList<CoinsCards>> listeCartesTresor;
     private ArrayList<ArrayList<ActionCards>> listeCartesAction;
+    private Joueur joueurAdverse;
 
 
     public static Partie creerPartie(String[] nomJoueurs) {
@@ -251,5 +252,15 @@ public class Partie
 
     public ArrayList<ArrayList<ActionCards>> getListeCartesAction() {
         return listeCartesAction;
+    }
+
+    public Joueur getJoueurAdverse() {
+        for (int i = 0; i < joueurs.length; i++){
+            if (!(joueurs[i].equals(joueurCourrant))){
+                joueurAdverse = joueurs[i];
+            }
+        }
+
+        return joueurAdverse;
     }
 }

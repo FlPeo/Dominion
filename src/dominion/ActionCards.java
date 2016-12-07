@@ -122,6 +122,12 @@ public class ActionCards extends Cards {
         listeActions.add(new ActionAddXCoins(p, 2));
         listeCartesActions[8] = new ActionCards(23, listeActions, 5);
 
+        // Adonis
+        listeActions = new ArrayList<Action>(); // carte sorcière
+        listeActions.add(new ActionAddCarteMalediction(p,1));
+        listeCartesActions[8] = new ActionCards(3, listeActions, 5);
+        // ------
+
 
         return listeCartesActions;
     }

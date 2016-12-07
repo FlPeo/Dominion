@@ -241,4 +241,28 @@ public class ActionUnitTest {
         Assert.assertEquals(nbCarteCoinsAvant+2, nbCarteCoinsApres);
     }
 
+    @Test
+    public void testAddCarteMalediction(){
+        Joueur[] joueurs = new Joueur[1];
+        Partie p = creerPartie();
+        joueurs[0] = new Joueur("joueur", creerCartesPourTest(p), 0);
+        p.setJoueurs(joueurs);
+
+        joueurs[0].piocherMalediction();
+
+        Assert.assertEquals(joueurs[0].getCarteMain(0).getId(),3);
+    }
+
+    @Test
+    public void testDefausseToutLeDeck(){
+        Joueur[] joueurs = new Joueur[1];
+        Partie p = creerPartie();
+        joueurs[0] = new Joueur("joueur", creerCartesPourTest(p), 0);
+        p.setJoueurs(joueurs);
+
+        joueurs[0].deckToDefausse();
+
+        Assert.assertEquals(joueurs[0].getDeck().size(),0);
+    }
+
 }
