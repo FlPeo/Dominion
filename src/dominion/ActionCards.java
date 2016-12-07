@@ -106,7 +106,7 @@ public class ActionCards extends Cards {
         listeActions = new ArrayList<Action>();    //carte chambre du conseil
         listeActions.add(new ActionAddXCartes(p, 4));
         listeActions.add(new ActionAddXAchats(p, 1));
-        listeActions.add(new ActionAddArgentToDeck(p, 1));
+        listeActions.add(new ActionAdversairesAddXCartes(p, 1));
         listeCartesActions[6] = new ActionCards(14, listeActions, 5);
 
 
