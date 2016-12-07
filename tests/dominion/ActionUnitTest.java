@@ -177,4 +177,9 @@ public class ActionUnitTest {
 
     }
 
+    @Test
+    public void testPiocheJusque2CoinsDevoile(){
+
+    }
+
 }
