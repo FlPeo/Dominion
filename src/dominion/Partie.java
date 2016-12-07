@@ -236,6 +236,9 @@ public class Partie
         return listeCartesTresor.get(i).size();
     }
 
+    public Joueur[] getJoueurs(){
+        return joueurs;
+    }
 
     public EtapesTour getEtapesTour() {
         return etapesTour;
