@@ -46,9 +46,6 @@ public class Partie
     }
 
 
-
-
-
     //les fins
 
     /**
@@ -242,5 +239,17 @@ public class Partie
 
     public EtapesTour getEtapesTour() {
         return etapesTour;
+    }
+
+    public ArrayList<ArrayList<VictoireCards>> getListeCartesVictoire() {
+        return listeCartesVictoire;
+    }
+
+    public ArrayList<ArrayList<CoinsCards>> getListeCartesTresor() {
+        return listeCartesTresor;
+    }
+
+    public ArrayList<ArrayList<ActionCards>> getListeCartesAction() {
+        return listeCartesAction;
     }
 }
