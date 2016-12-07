@@ -3,6 +3,8 @@ package dominion;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by sakalypse on 05/11/16.
@@ -13,9 +15,9 @@ public class View_Accueil extends JFrame {
     private JLabel titre;
     private JLabel background;
 
-    private JButton lancerPartie;
-    private JButton credit;
-    private JButton quitterJeu;
+    private DominionButton lancerPartie;
+    private DominionButton credit;
+    private DominionButton quitterJeu;
 
     /**
      * Constructeur de la vue
@@ -33,11 +35,11 @@ public class View_Accueil extends JFrame {
         ySize = (int) tk.getScreenSize().getHeight();
         setSize(xSize, ySize);
 
-        setTitle("dominion.Dominion");
+        setTitle("Dominion");
         setResizable(false);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        display();
+
     }
 
     /**
@@ -46,17 +48,21 @@ public class View_Accueil extends JFrame {
     private void initAttribut()
     {
         // Initialisation des variables
-        titre = new JLabel("dominion.Dominion");
-        titre.setForeground(new Color(0, 0, 100));
-        titre.setFont(new Font("Arial", Font.BOLD, 30));
+        titre = new JLabel(new ImageIcon(("Images/decors/logo.jpg")));
 
-        lancerPartie = new JButton("Lancer la partie");
-        credit = new JButton("Credits");
-        quitterJeu = new JButton("Quitter");
+        lancerPartie = new DominionButton("Lancer la partie");
+        credit = new DominionButton("Credits");
+        quitterJeu = new DominionButton("Quitter");
 
-        lancerPartie.setBackground(Color.white);
-        credit.setBackground(Color.white);
-        quitterJeu.setBackground(Color.white);
+        GraphicsEnvironment fontLabel = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        try
+        {
+            fontLabel.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("font/Cardinal.ttf")));
+        }
+        catch (FontFormatException | IOException fe)
+        {
+            fe.printStackTrace();
+        }
     }
 
     /**
@@ -66,22 +72,30 @@ public class View_Accueil extends JFrame {
      */
     private void creerWidgetAccueil()
     {
-        JPanel centre = new JPanel(new GridLayout(11, 1, 0, 10));
-        centre.setOpaque(false);
-        centre.add(Box.createVerticalGlue());
-        centre.add(lancerPartie);
-        centre.add(credit);
-        centre.add(quitterJeu);
+        JPanel menus = new JPanel(new GridLayout(6,1,0,25));
+        menus.setOpaque(false);
+        menus.add(Box.createVerticalGlue());
+        menus.add(Box.createVerticalGlue());
+        menus.add(Box.createVerticalGlue());
+        menus.add(lancerPartie);
+        menus.add(credit);
+        menus.add(quitterJeu);
 
-        JPanel organisation = new JPanel(new BorderLayout());
+        JPanel menu = new JPanel(new BorderLayout());
+        menu.setOpaque(false);
+        menu.add(titre, BorderLayout.NORTH);
+        menu.add(menus, BorderLayout.SOUTH);
+
+        JPanel organisation = new JPanel(new GridLayout(2, 3));
         organisation.setOpaque(false);
-        organisation.add(titre, BorderLayout.NORTH);
+        organisation.add(menu);
+        organisation.add(Box.createVerticalGlue());
+        organisation.add(Box.createVerticalGlue());
+        organisation.add(Box.createVerticalGlue());
 
-        organisation.add(centre, BorderLayout.SOUTH);
 
         // Mise en place du fond d'écran
-        setLayout(new BorderLayout());
-        background = new JLabel(); //TODO : a ajouter
+        background = new JLabel(new ImageIcon("Images/decors/background1.jpg"));
         background.setSize(xSize, ySize);
         background.setLayout(new FlowLayout());
         background.add(organisation, BorderLayout.CENTER);

@@ -18,6 +18,7 @@ public class View_Partie  extends JFrame {
     private Partie modelePartie;
 
     private JLabel[] labelsJoueurs;
+    private JLabel background;
 
     private JButton[] boutonsVictoire;
     private JButton[] boutonsAction;
@@ -51,7 +52,7 @@ public class View_Partie  extends JFrame {
         creerWidgetPartie();
 
         setUndecorated(true);
-        setTitle("dominion.Dominion");
+        setTitle("Dominion");
         setResizable(false);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -125,16 +126,26 @@ public class View_Partie  extends JFrame {
     private void creerWidgetPartie()
     {
         JPanel global = new JPanel(new FlowLayout(FlowLayout.LEFT,0,0));
+        global.setOpaque(false);
         JPanel panelGauche = createPanelGauche();
+        panelGauche.setOpaque(false);
         JPanel panelCentral = createPanelCentral();
+        panelCentral.setOpaque(false);
         JPanel panelDroite = createPanelDroit();
+        panelDroite.setOpaque(false);
 
 
         global.add(panelGauche);
         global.add(panelCentral);
         global.add(panelDroite);
 
-        setContentPane(global);
+        // Mise en place du fond d'écran
+        background = new JLabel(new ImageIcon("Images/decors/backgroundParty.jpg"));
+        background.setSize(xSize, ySize);
+        background.setLayout(new FlowLayout());
+        background.add(global, BorderLayout.CENTER);
+
+        setContentPane(background);
     }
 
 
@@ -146,33 +157,32 @@ public class View_Partie  extends JFrame {
         int i;
 
         JPanel panelDroite = new JPanel(new GridLayout(2,1));
+        panelDroite.setOpaque(false);
         panelDroite.setPreferredSize(new Dimension(xSize/8, ySize));
 
-
-
         JPanel panelCartesTresor = new JPanel();
+        panelCartesTresor.setOpaque(false);
         BoxLayout layoutTresor = new BoxLayout(panelCartesTresor, BoxLayout.Y_AXIS);
         panelCartesTresor.setLayout(layoutTresor);
-        panelCartesTresor.setBackground(Color.GREEN);
 
         for(i=0 ; i<boutonsTresor.length; i++){
             JPanel p = new JPanel(new BorderLayout());
+            p.setOpaque(false);
             p.add(boutonsTresor[i], BorderLayout.CENTER);
             p.add(Box.createHorizontalStrut(15), BorderLayout.EAST);
             p.add(Box.createHorizontalStrut(15), BorderLayout.WEST);
             panelCartesTresor.add(p);
         }
 
-
-
-
         JPanel panelChoix = new JPanel();
+        panelChoix.setOpaque(false);
         BoxLayout layoutChoix = new BoxLayout(panelChoix, BoxLayout.Y_AXIS);
         panelChoix.setLayout(layoutChoix);
         panelChoix.setBackground(Color.BLUE);
 
         for(i=0 ; i<boutonsChoix.length; i++){
             JPanel p = new JPanel(new BorderLayout());
+            p.setOpaque(false);
             p.add(boutonsChoix[i], BorderLayout.CENTER);
             p.add(Box.createHorizontalStrut(15), BorderLayout.EAST);
             p.add(Box.createHorizontalStrut(15), BorderLayout.WEST);
@@ -195,26 +205,28 @@ public class View_Partie  extends JFrame {
         int i;
 
         JPanel panelCentral = new JPanel(new GridLayout(2,1));
+        panelCentral.setOpaque(false);
         panelCentral.setPreferredSize(new Dimension(6*(xSize/8), ySize));
         JPanel panelCentralHaut = new JPanel(new FlowLayout(FlowLayout.LEFT,0,0));
-
-
+        panelCentralHaut.setOpaque(false);
 
         JPanel panelCartesVictoire = new JPanel();
+        panelCartesVictoire.setOpaque(false);
         BoxLayout layoutVictoire = new BoxLayout(panelCartesVictoire, BoxLayout.Y_AXIS);
         panelCartesVictoire.setLayout(layoutVictoire);
         panelCartesVictoire.setBackground(Color.WHITE);
         panelCartesVictoire.setPreferredSize(new Dimension(xSize/8, ySize/2));
 
-
         JPanel panelCartesAction = new JPanel(new BorderLayout());
+        panelCartesAction.setOpaque(false);
         panelCartesAction.setPreferredSize(new Dimension(5*(xSize/8), ySize/2));
         panelCartesAction.setBackground(Color.BLUE);
         JPanel panelCentreCartesAction = new JPanel(new GridLayout(2,5));
-
+        panelCentreCartesAction.setOpaque(false);
 
         for(i=0 ; i<boutonsVictoire.length; i++){
             JPanel p = new JPanel(new BorderLayout());
+            p.setOpaque(false);
             p.add(boutonsVictoire[i], BorderLayout.CENTER);
             p.add(Box.createHorizontalStrut(15), BorderLayout.EAST);
             p.add(Box.createHorizontalStrut(15), BorderLayout.WEST);
@@ -228,10 +240,8 @@ public class View_Partie  extends JFrame {
         panelCartesAction.add(Box.createHorizontalStrut(15), BorderLayout.WEST);
         panelCartesAction.add(panelCentreCartesAction, BorderLayout.CENTER);
 
-
-
-
         JPanel panelCartesJoueur = new JPanel(new BorderLayout());
+        panelCartesJoueur.setOpaque(false);
         panelCartesMain = new JPanel(new GridLayout(1,5));
         panelCartesMain.setSize(new Dimension(-1, ySize/2 - 30));
         panelCartesJoueur.setBackground(Color.PINK);
@@ -244,16 +254,13 @@ public class View_Partie  extends JFrame {
         panelCartesJoueur.add(Box.createVerticalStrut(15), BorderLayout.NORTH);
         panelCartesJoueur.add(panelCartesMain, BorderLayout.CENTER);
 
-
         panelCentralHaut.add(panelCartesVictoire);
         panelCentralHaut.add(panelCartesAction);
         panelCentral.add(panelCentralHaut, 0);
         panelCentral.add(panelCartesJoueur, 1);
 
-
         return panelCentral;
     }
-
 
 
     /**
@@ -262,26 +269,24 @@ public class View_Partie  extends JFrame {
      */
     private JPanel createPanelGauche() {
         JPanel panelGauche = new JPanel(new GridLayout(2,1));
+        panelGauche.setOpaque(false);
         panelGauche.setPreferredSize(new Dimension(xSize/8, ySize));
 
-
-
         JPanel panelJoueurs = new JPanel();
+        panelJoueurs.setOpaque(false);
         BoxLayout layoutJoueurs = new BoxLayout(panelJoueurs, BoxLayout.Y_AXIS);
         panelJoueurs.setLayout(layoutJoueurs);
         panelJoueurs.setBackground(Color.GRAY);
 
         JPanel panelDefausse = new JPanel();
+        panelDefausse.setOpaque(false);
         panelDefausse.setBackground(Color.RED);
 
-
-
-
         JPanel p1 = new JPanel(new BorderLayout()), p2 = new JPanel(new BorderLayout());
+        p1.setOpaque(false);
+        p2.setOpaque(false);
         p1.add(labelsJoueurs[0], BorderLayout.CENTER);
         p2.add(labelsJoueurs[1], BorderLayout.CENTER);
-
-
 
         panelJoueurs.add(p1);
         panelJoueurs.add(p2);
