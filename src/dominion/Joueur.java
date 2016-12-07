@@ -91,12 +91,13 @@ public class Joueur
     public void piocher(int valeur) {
         Cards card;
         for (int i = 0; i < valeur; i++){
-            card = deck.get(deck.size() - 1);
-            main.add(card);
-            deck.remove(card);
             if(deck.size()==0){
                 defausseToDeck();
             }
+
+            card = deck.get(deck.size() - 1);
+            main.add(card);
+            deck.remove(card);
         }
     }
 
