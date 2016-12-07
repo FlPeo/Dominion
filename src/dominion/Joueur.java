@@ -194,4 +194,7 @@ public class Joueur
     public int getSizeDefausse(){
         return defausse.size();
     }
+    public List<Cards> getMain(){
+        return main;
+    }
 }
