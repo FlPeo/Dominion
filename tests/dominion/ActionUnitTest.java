@@ -179,7 +179,35 @@ public class ActionUnitTest {
 
     @Test
     public void testPiocheJusque2CoinsDevoile(){
+        Joueur[] joueurs = new Joueur[1];
+        Partie p = creerPartie();
+        joueurs[0] = new Joueur("joueur", creerCartesPourTest(p), 0);
+        p.setJoueurs(joueurs);
 
+
+        //garde en mémoire le nombre de carte coins avant l'action de la carte
+        int nbCarteCoinsAvant=0, nbCarteCoinsApres=0, i;
+        for (i=0; i<joueurs[0].getSizeMain(); i++){
+            if (joueurs[0].getCarteMain(i).getId()  == 0
+                    || joueurs[0].getCarteMain(i).getId() == 1
+                    || joueurs[0].getCarteMain(i).getId() == 2){
+                nbCarteCoinsAvant++;
+            }
+        }
+
+        Action a = new ActionPiocheJusque2CoinsDevoile(p, 1);
+        a.action();
+
+        //check le nombre de carte coins après l'action
+        for (i=0; i<joueurs[0].getSizeMain(); i++){
+            if (joueurs[0].getCarteMain(i).getId()  == 0
+                    || joueurs[0].getCarteMain(i).getId() == 1
+                    || joueurs[0].getCarteMain(i).getId() == 2){
+                nbCarteCoinsApres++;
+            }
+        }
+
+        Assert.assertEquals(nbCarteCoinsAvant+2, nbCarteCoinsApres);
     }
 
 }
