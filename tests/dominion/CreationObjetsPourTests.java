@@ -12,10 +12,9 @@ import java.util.List;
  */
 public class CreationObjetsPourTests {
 
-    public static Partie creerPartie(Joueur[] joueurs){
+    public static Partie creerPartie(){
         Partie p = new Partie(EtapesTour.ACTION, creerCartesVictoire(),creerCartesTresor());
         p.setCartesAction(creerCartesAction());
-        p.setJoueurs(joueurs);
         return p;
     }
 
@@ -25,7 +24,7 @@ public class CreationObjetsPourTests {
 
         for(int i = 0 ; i<4 ; i++){
             listeUneSorteCarte = new ArrayList<VictoireCards>();
-            for(int j = 0 ; j<3+i ; j++){
+            for(int j = 0 ; j<8 ; j++){
                 listeUneSorteCarte.add(new VictoireCards(i));
             }
             listeCartes.add(listeUneSorteCarte);
@@ -40,7 +39,7 @@ public class CreationObjetsPourTests {
 
         for(int i = 0 ; i<3 ; i++){
             listeUneSorteCarte = new ArrayList<CoinsCards>();
-            for(int j = 0 ; j<3+i ; j++){
+            for(int j = 0 ; j<10 ; j++){
                 listeUneSorteCarte.add(new CoinsCards(i));
             }
             listeCartes.add(listeUneSorteCarte);
@@ -55,7 +54,7 @@ public class CreationObjetsPourTests {
 
         for(int i = 0 ; i<3 ; i++){
             listeUneSorteCarte = new ArrayList<ActionCards>();
-            for(int j = 0 ; j<3+i ; j++){
+            for(int j = 0 ; j<10 ; j++){
                 listeUneSorteCarte.add(new ActionCards(j, null, 2+i));
             }
             listeCartes.add(listeUneSorteCarte);

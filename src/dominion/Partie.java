@@ -119,10 +119,13 @@ public class Partie
     //achats
 
     public boolean tryAchatCarteVictoire(int i) {
-        Cards c = listeCartesVictoire.get(i).get(listeCartesVictoire.get(i).size() - 1);
+        if(listeCartesVictoire.get(i).size() == 0) return false;
+
+        Cards c = listeCartesVictoire.get(i).get(listeCartesVictoire.get(i).size()-1);
         if(c.getCout()>joueurCourrant.getCoins()){
             return false;
         }
+
         listeCartesVictoire.get(i).remove(c);
         joueurCourrant.addCoin(-c.getCout());
         joueurCourrant.ajoutCarteMain(c);
@@ -130,10 +133,13 @@ public class Partie
     }
 
     public boolean tryAchatCarteTresor(int i) {
+        if(listeCartesTresor.get(i).size() == 0) return false;
+
         Cards c = listeCartesTresor.get(i).get(listeCartesTresor.get(i).size() - 1);
         if(c.getCout()>joueurCourrant.getCoins()){
             return false;
         }
+
         listeCartesTresor.get(i).remove(c);
         joueurCourrant.addCoin(-c.getCout());
         joueurCourrant.ajoutCarteMain(c);
@@ -141,10 +147,13 @@ public class Partie
     }
 
     public boolean tryAchatCarteAction(int i) {
+        if(listeCartesAction.get(i).size() == 0) return false;
+
         Cards c = listeCartesAction.get(i).get(listeCartesAction.get(i).size() - 1);
         if(c.getCout()>joueurCourrant.getCoins()){
             return false;
         }
+
         listeCartesAction.get(i).remove(c);
         joueurCourrant.addCoin(-c.getCout());
         joueurCourrant.ajoutCarteMain(c);

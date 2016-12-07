@@ -5,7 +5,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static dominion.CreationObjetsPourTests.creerCartesPourTest;
 import static dominion.CreationObjetsPourTests.creerPartie;
@@ -20,7 +19,7 @@ public class ActionUnitTest {
     @Test
     public void testPlusXCoins(){
         Joueur[] joueurs = new Joueur[1];
-        Partie p = creerPartie(joueurs);
+        Partie p = creerPartie();
         joueurs[0] = new Joueur("joueur", creerCartesPourTest(p), 0);
         p.setJoueurs(joueurs);
 
@@ -37,7 +36,7 @@ public class ActionUnitTest {
     @Test
     public void testPlusXActions(){
         Joueur[] joueurs = new Joueur[1];
-        Partie p = creerPartie(joueurs);
+        Partie p = creerPartie();
         joueurs[0] = new Joueur("joueur", creerCartesPourTest(p), 0);
         p.setJoueurs(joueurs);
 
@@ -54,7 +53,7 @@ public class ActionUnitTest {
     @Test
     public void testPlusXAchats(){
         Joueur[] joueurs = new Joueur[1];
-        Partie p = creerPartie(joueurs);
+        Partie p = creerPartie();
         joueurs[0] = new Joueur("joueur", creerCartesPourTest(p), 0);
         p.setJoueurs(joueurs);
 
@@ -71,7 +70,7 @@ public class ActionUnitTest {
     @Test
     public void testPlusXCartes(){
         Joueur[] joueurs = new Joueur[1];
-        Partie p = creerPartie(joueurs);
+        Partie p = creerPartie();
         joueurs[0] = new Joueur("joueur", creerCartesPourTest(p), 0);
         p.setJoueurs(joueurs);
 
@@ -94,7 +93,7 @@ public class ActionUnitTest {
     @Test
     public void testEcarterCetteCarteSiPileNonVide(){
         Joueur[] joueurs = new Joueur[1];
-        Partie p = creerPartie(joueurs);
+        Partie p = creerPartie();
 
 
         ArrayList<Action> listeActions = new ArrayList<>();
@@ -134,7 +133,7 @@ public class ActionUnitTest {
     @Test
     public void testEcarterCetteCarteSiPileVide(){
         Joueur[] joueurs = new Joueur[1];
-        Partie p = creerPartie(joueurs);
+        Partie p = creerPartie();
 
 
 

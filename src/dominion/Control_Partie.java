@@ -42,7 +42,7 @@ public class Control_Partie implements ActionListener{
                 if(c.isCarteAction()){
                     ((ActionCards)c).action();
                     if(((ActionCards)c).isCarteADefausserApresAction()){
-                        modelPartie.getJoueurCourrant().removeCarteMain(i);
+                        modelPartie.getJoueurCourrant().carteVaDeMainADefausse(i);
                     }
                     modelPartie.finTourAction();
                     viewPartie.majVue();

@@ -76,7 +76,7 @@ public class Joueur
         main.remove(c);
     }
 
-    public void removeCarteMain(int index){
+    public void carteVaDeMainADefausse(int index){
         Cards c = main.remove(index);
         defausse.add(c);
     }
