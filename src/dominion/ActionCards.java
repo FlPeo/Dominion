@@ -80,31 +80,41 @@ public class ActionCards extends Cards {
         listeCartesActions[0] = new ActionCards(4, listeActions, 5);
 
         listeActions = new ArrayList<Action>();
+        listeActions.add(new ActionAddXCartes(p, 2));    //carte douves
+        listeCartesActions[1] = new ActionCards(7, listeActions, 2);
+
+        listeActions = new ArrayList<Action>();
         listeActions.add(new ActionAddXCartes(p, 2));    //carte laboratoire
         listeActions.add(new ActionAddXActions(p, 1));
-        listeCartesActions[1] = new ActionCards(9, listeActions, 5);
+        listeCartesActions[2] = new ActionCards(9, listeActions, 5);
 
         listeActions = new ArrayList<Action>();
         listeActions.add(new ActionAddXCartes(p, 1));    //carte village
         listeActions.add(new ActionAddXActions(p, 2));
-        listeCartesActions[2] = new ActionCards(10, listeActions, 3);
+        listeCartesActions[3] = new ActionCards(10, listeActions, 3);
 
         listeActions = new ArrayList<Action>();
         listeActions.add(new ActionAddXAchats(p, 1));  //carte bucheron
         listeActions.add(new ActionAddXCoins(p, 2));
-        listeCartesActions[3] = new ActionCards(11, listeActions, 3);
+        listeCartesActions[4] = new ActionCards(11, listeActions, 3);
+
+
+        listeActions = new ArrayList<Action>();    //carte jardins
+        listeCartesActions[5] = new ActionCards(12, listeActions, 4);
+
+
 
         //14 et 20 = faisable facilement
 
         listeActions = new ArrayList<Action>();
         listeActions.add(new ActionAddXCartes(p, 3));  //carte forgeron
-        listeCartesActions[4] = new ActionCards(15, listeActions, 4);
+        listeCartesActions[6] = new ActionCards(15, listeActions, 4);
 
         listeActions = new ArrayList<Action>();
         listeActions.add(new ActionAddXActions(p, 2));  //carte festival
         listeActions.add(new ActionAddXAchats(p, 1));
         listeActions.add(new ActionAddXCoins(p, 2));
-        listeCartesActions[5] = new ActionCards(23, listeActions, 5);
+        listeCartesActions[7] = new ActionCards(23, listeActions, 5);
 
 
         return listeCartesActions;
