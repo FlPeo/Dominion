@@ -103,18 +103,24 @@ public class ActionCards extends Cards {
         listeCartesActions[5] = new ActionCards(12, listeActions, 4);
 
 
+        listeActions = new ArrayList<Action>();    //carte chambre du conseil
+        listeActions.add(new ActionAddXCartes(p, 4));
+        listeActions.add(new ActionAddXAchats(p, 1));
+        listeActions.add(new ActionAddArgentToDeck(p, 1));
+        listeCartesActions[6] = new ActionCards(14, listeActions, 5);
+
 
         //14 et 20 = faisable facilement
 
         listeActions = new ArrayList<Action>();
         listeActions.add(new ActionAddXCartes(p, 3));  //carte forgeron
-        listeCartesActions[6] = new ActionCards(15, listeActions, 4);
+        listeCartesActions[7] = new ActionCards(15, listeActions, 4);
 
         listeActions = new ArrayList<Action>();
         listeActions.add(new ActionAddXActions(p, 2));  //carte festival
         listeActions.add(new ActionAddXAchats(p, 1));
         listeActions.add(new ActionAddXCoins(p, 2));
-        listeCartesActions[7] = new ActionCards(23, listeActions, 5);
+        listeCartesActions[8] = new ActionCards(23, listeActions, 5);
 
 
         return listeCartesActions;
