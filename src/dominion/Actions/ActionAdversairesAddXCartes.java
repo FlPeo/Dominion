@@ -14,7 +14,8 @@ public class ActionAdversairesAddXCartes extends Action {
     public void action(){
         Joueur[] joueurs = partie.getJoueurs();
         for (int i = 0; i<joueurs.length; i++){
-            joueurs[i].piocher(valeur);
+            if(joueurs[i] != partie.getJoueurCourrant())
+                joueurs[i].piocher(valeur);
         }
     }
 }

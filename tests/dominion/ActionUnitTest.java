@@ -178,6 +178,37 @@ public class ActionUnitTest {
     }
 
     @Test
+    public void testAdversaireAddXCartes()
+    {
+        Joueur[] joueurs = new Joueur[2];
+        Partie p = creerPartie();
+
+
+        ArrayList<Action> listeActionsJ1 = new ArrayList<>();
+        ActionEcarterCetteCarte act = new ActionEcarterCetteCarte(p,5);
+        listeActionsJ1.add(act);
+        ActionCards carte2 = new ActionCards(5, listeActionsJ1, 5);
+        ArrayList<Cards> listeCartesJ1 = new ArrayList<>();
+        listeCartesJ1.add(carte2);
+        Joueur j1 = new Joueur("J1", listeCartesJ1, 1);
+
+
+        Joueur j2 = new Joueur("J2", new ArrayList<>(), 2);
+
+        joueurs[0] = j1;
+        joueurs[1] = j2;
+
+        p.setJoueurs(joueurs);
+        p.setJoueurCourrant(j2);
+
+        Action action = new ActionAdversairesAddXCartes(p,1);
+        action.action();
+
+        Assert.assertEquals(carte2, j1.getCarteMain(0));
+
+    }
+
+    @Test
     public void testPiocheJusque2CoinsDevoile(){
         Joueur[] joueurs = new Joueur[1];
         Partie p = creerPartie();
