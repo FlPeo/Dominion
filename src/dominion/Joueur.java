@@ -82,6 +82,11 @@ public class Joueur
         defausse.add(c);
     }
 
+    public void carteVaDeMainADefausse(Cards c){
+        main.remove(c);
+        defausse.add(c);
+    }
+
 
 
 

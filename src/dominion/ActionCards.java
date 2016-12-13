@@ -64,7 +64,8 @@ public class ActionCards extends Cards {
 
 
     private static ActionCards[] creer25CartesAction(Partie p) {
-        ActionCards[] listeCartesActions = new ActionCards[25];
+        //ActionCards[] listeCartesActions = new ActionCards[25];
+        ActionCards[] listeCartesActions = new ActionCards[11];
         for(int i = 0; i< listeCartesActions.length ; i++){
             listeCartesActions[i] = carteBoucheTrou;
         }
@@ -73,59 +74,69 @@ public class ActionCards extends Cards {
 
         List<Action> listeActions = new ArrayList<Action>();
 
+        listeActions = new ArrayList<Action>(); // carte sorcière
+        listeActions.add(new ActionAddCarteMalediction(p,1));
+        listeCartesActions[0] = new ActionCards(3, listeActions, 5);
+
         listeActions.add(new ActionAddXCartes(p, 1));    //carte marché
         listeActions.add(new ActionAddXActions(p, 1));
         listeActions.add(new ActionAddXAchats(p, 1));
         listeActions.add(new ActionAddXCoins(p, 1));
-        listeCartesActions[0] = new ActionCards(4, listeActions, 5);
+        listeCartesActions[1] = new ActionCards(4, listeActions, 5);
 
         listeActions = new ArrayList<Action>();
         listeActions.add(new ActionAddXCartes(p, 2));    //carte douves
-        listeCartesActions[1] = new ActionCards(7, listeActions, 2);
+        listeCartesActions[2] = new ActionCards(7, listeActions, 2);
 
         listeActions = new ArrayList<Action>();
         listeActions.add(new ActionAddXCartes(p, 2));    //carte laboratoire
         listeActions.add(new ActionAddXActions(p, 1));
-        listeCartesActions[2] = new ActionCards(9, listeActions, 5);
+        listeCartesActions[3] = new ActionCards(9, listeActions, 5);
 
         listeActions = new ArrayList<Action>();
         listeActions.add(new ActionAddXCartes(p, 1));    //carte village
         listeActions.add(new ActionAddXActions(p, 2));
-        listeCartesActions[3] = new ActionCards(10, listeActions, 3);
+        listeCartesActions[4] = new ActionCards(10, listeActions, 3);
 
         listeActions = new ArrayList<Action>();
         listeActions.add(new ActionAddXAchats(p, 1));  //carte bucheron
         listeActions.add(new ActionAddXCoins(p, 2));
-        listeCartesActions[4] = new ActionCards(11, listeActions, 3);
+        listeCartesActions[5] = new ActionCards(11, listeActions, 3);
 
 
         listeActions = new ArrayList<Action>();    //carte jardins
-        listeCartesActions[5] = new ActionCards(12, listeActions, 4);
+        listeCartesActions[6] = new ActionCards(12, listeActions, 4);
 
 
         listeActions = new ArrayList<Action>();    //carte chambre du conseil
         listeActions.add(new ActionAddXCartes(p, 4));
         listeActions.add(new ActionAddXAchats(p, 1));
         listeActions.add(new ActionAdversairesAddXCartes(p, 1));
-        listeCartesActions[6] = new ActionCards(14, listeActions, 5);
+        listeCartesActions[7] = new ActionCards(14, listeActions, 5);
 
 
-        //14 et 20 = faisable facilement
 
         listeActions = new ArrayList<Action>();
         listeActions.add(new ActionAddXCartes(p, 3));  //carte forgeron
-        listeCartesActions[7] = new ActionCards(15, listeActions, 4);
+        listeCartesActions[8] = new ActionCards(15, listeActions, 4);
+
+
+        //21 : jouer carte action deux fois
+        //A tester !!
+        listeActions = new ArrayList<Action>();
+        listeActions.add(new ActionChoixCarteActionMain(p, 1));  //salle du trone
+        listeActions.add(new ActionJouerDeuxFoisCarteChoisie(p, 1));
+        listeCartesActions[9] = new ActionCards(21, listeActions, 4);
+
 
         listeActions = new ArrayList<Action>();
         listeActions.add(new ActionAddXActions(p, 2));  //carte festival
         listeActions.add(new ActionAddXAchats(p, 1));
         listeActions.add(new ActionAddXCoins(p, 2));
-        listeCartesActions[8] = new ActionCards(23, listeActions, 5);
+        listeCartesActions[10] = new ActionCards(23, listeActions, 5);
 
         // Adonis
-        listeActions = new ArrayList<Action>(); // carte sorcière
-        listeActions.add(new ActionAddCarteMalediction(p,1));
-        listeCartesActions[8] = new ActionCards(3, listeActions, 5);
+
         // ------
 
 
@@ -149,4 +160,16 @@ public class ActionCards extends Cards {
     }
 
 
+    public void rempliActionsTour(Partie modelPartie) {
+        for(Action a : listeActions){
+            modelPartie.addAction(a);
+        }
+    }
+
+    public void rempliActionsTour(Partie modelPartie, int index) {
+        for(Action a : listeActions){
+            modelPartie.addAction(a, index);
+            index++;
+        }
+    }
 }

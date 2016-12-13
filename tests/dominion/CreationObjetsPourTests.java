@@ -13,7 +13,7 @@ import java.util.List;
 public class CreationObjetsPourTests {
 
     public static Partie creerPartie(){
-        Partie p = new Partie(EtapesTour.ACTION, creerCartesVictoire(),creerCartesTresor());
+        Partie p = new Partie(EtapesTour.ACTION, creerCartesVictoire(), creerCartesTresor(), null, null);
         p.setCartesAction(creerCartesAction());
         return p;
     }

@@ -95,7 +95,7 @@ public class PartieUnitTest {
 
 
         Joueur[] joueurs = new Joueur[2];
-        Partie p = new Partie(EtapesTour.ACHAT, listeCartesVictoire, listeCoinsCards);
+        Partie p = new Partie(EtapesTour.ACHAT, listeCartesVictoire, listeCoinsCards, null, null);
         joueurs[0] = new Joueur("joueur", creerCartesPourTest(p), 0);
         joueurs[1] = new Joueur("j2", creerCartesPourTest(p), 0);
         p.setJoueurs(joueurs);
@@ -130,7 +130,7 @@ public class PartieUnitTest {
 
 
         Joueur[] joueurs = new Joueur[2];
-        Partie p = new Partie(EtapesTour.ACHAT, listeCartesVictoire, listeCoinsCards);
+        Partie p = new Partie(EtapesTour.ACHAT, listeCartesVictoire, listeCoinsCards, null, null);
         joueurs[0] = new Joueur("joueur", creerCartesPourTest(p), 0);
         joueurs[1] = new Joueur("j2", creerCartesPourTest(p), 0);
         p.setJoueurs(joueurs);
@@ -165,7 +165,7 @@ public class PartieUnitTest {
 
 
         Joueur[] joueurs = new Joueur[2];
-        Partie p = new Partie(EtapesTour.ACHAT, listeCartesVictoire, listeCoinsCards);
+        Partie p = new Partie(EtapesTour.ACHAT, listeCartesVictoire, listeCoinsCards, null, null);
         joueurs[0] = new Joueur("joueur", creerCartesPourTest(p), 0);
         joueurs[1] = new Joueur("j2", creerCartesPourTest(p), 0);
         p.setJoueurs(joueurs);

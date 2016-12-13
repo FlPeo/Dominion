@@ -15,4 +15,8 @@ public abstract class Action {
     }
 
     public abstract void action();
+
+    public boolean estBloquante(){
+        return false;
+    }
 }

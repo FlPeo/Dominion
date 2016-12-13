@@ -1,7 +1,11 @@
 package dominion;
 
+import dominion.Actions.Action;
+
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Created by florian on 13/11/2016.
@@ -18,6 +22,10 @@ public class Partie
     private ArrayList<ArrayList<ActionCards>> listeCartesAction;
     private Joueur joueurAdverse;
 
+    private ArrayList<Cards> cartesChoisiesParJoueur;
+    private ArrayList<Action> listeActions;
+    private int idJoueurChoixAction;
+
 
     public static Partie creerPartie(String[] nomJoueurs) {
         Joueur[] joueurs = new Joueur[nomJoueurs.length];
@@ -30,7 +38,10 @@ public class Partie
         ArrayList<ArrayList<VictoireCards>> cartesVictoire = VictoireCards.creerCartesVictoire(nomJoueurs.length);
         ArrayList<ArrayList<CoinsCards>> cartesTresor = CoinsCards.creerCartesTresor(nomJoueurs.length);
 
-        Partie p = new Partie(EtapesTour.ACTION, cartesVictoire, cartesTresor);
+        ArrayList<Cards> cartesChoisiesParJoueur = new ArrayList<Cards>();
+        ArrayList<Action> listeActions = new ArrayList<Action>();
+
+        Partie p = new Partie(EtapesTour.ACTION, cartesVictoire, cartesTresor, cartesChoisiesParJoueur, listeActions);
         ArrayList<ArrayList<ActionCards>> cartesAction = ActionCards.creer10CartesAction(p, nomJoueurs.length);
 
         p.setCartesAction(cartesAction);
@@ -39,7 +50,12 @@ public class Partie
     }
 
     public Partie(EtapesTour etapesTour, ArrayList<ArrayList<VictoireCards>> cartesVictoire,
-                  ArrayList<ArrayList<CoinsCards>> cartesTresor) {
+                  ArrayList<ArrayList<CoinsCards>> cartesTresor, ArrayList<Cards> cartesChoisiesParJoueur,
+                    ArrayList<Action> listeActions) {
+
+        idJoueurChoixAction = -1;
+        this.listeActions = listeActions;
+        this.cartesChoisiesParJoueur= cartesChoisiesParJoueur;
 
         this.etapesTour = etapesTour;
         this.listeCartesVictoire= cartesVictoire;
@@ -262,5 +278,71 @@ public class Partie
         }
 
         return joueurAdverse;
+    }
+
+    public void addAction(Action a) {
+        listeActions.add(a);
+    }
+
+    public void addAction(Action a, int index) {
+        listeActions.add(index, a);
+    }
+
+    public void removeFirstAction(){
+        listeActions.remove(0);
+    }
+
+    public void actions() {
+
+        boolean bloque = false;
+
+        //Iterator<Action> iterateurAction = listeActions.iterator();
+
+        int i = 0;
+        /*while(iterateurAction.hasNext() && !bloque){
+            System.out.println("eea");
+            Action a = iterateurAction.next();
+            a.action();
+            bloque = a.estBloquante();
+            i++;
+        }*/
+
+        for(int k = 0 ; k<listeActions.size() && !bloque; k++){
+            System.out.println("eea");
+            Action a =listeActions.get(i);
+            a.action();
+            bloque = a.estBloquante();
+            i++;
+        }
+
+        for(int j = 0; j<i; j++){
+           listeActions.remove(0);
+        }
+
+        if(!bloque){
+            System.out.println("pas bloque" +
+                    "");
+            finTourAction();
+        }
+    }
+
+    public void setEtapesTour(EtapesTour etapesTour) {
+        this.etapesTour = etapesTour;
+    }
+
+    public void addCarteChoisieParJoueur(Cards c){
+        cartesChoisiesParJoueur.add(c);
+    }
+
+    public Cards getCarteChoisieParJoueur(int i){
+        return cartesChoisiesParJoueur.get(i);
+    }
+
+    public int getSizeCarteChoisieParJoueur(){
+        return cartesChoisiesParJoueur.size();
+    }
+
+    public void clearCarteChoisieParJoueur(){
+        cartesChoisiesParJoueur.clear();
     }
 }
