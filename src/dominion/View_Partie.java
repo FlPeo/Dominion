@@ -419,4 +419,34 @@ public class View_Partie  extends JFrame {
         labelsJoueurs[idJoueurPrec].setForeground(couleurJoueurDefaut);
         labelsJoueurs[idJoueur].setForeground(couleurJoueurCourrant);
     }
+
+    /*
+    * Permet de demander l'avi à l'utilisateur
+    * return True si oui
+    * False si non
+     */
+    public boolean showOptionDialog(String titre, String message){
+        int choix = JOptionPane.showOptionDialog(null,
+                message,
+                titre,
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null, null, null);
+        if (choix == JOptionPane.YES_OPTION)
+            return true;
+        else if (choix == JOptionPane.NO_OPTION)
+            return false;
+        else
+            return false;
+    }
+
+    /*
+    * Permet de notifier un message à l'utilisateur
+     */
+    void jOptionMessage(String titreFenetre, String message)
+    {
+        JOptionPane.showMessageDialog(this, message, titreFenetre, JOptionPane.INFORMATION_MESSAGE);
+    }
+
+
 }

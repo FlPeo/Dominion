@@ -55,6 +55,9 @@ public class Control_Partie implements ActionListener{
             }
         }
         else if(modelPartie.getEtapesTour()  == EtapesTour.ACHAT){
+            //Notifie le joueur suivant que c'est son tour
+            viewPartie.jOptionMessage("Votre tour", "Joueur " + modelPartie.getJoueurAdverse().getNomJoueur() + ". C'est votre tour");
+
             if(i==17){
                 boolean changeJoueur = modelPartie.finTourAchat();
                 viewPartie.majVue();
@@ -68,7 +71,15 @@ public class Control_Partie implements ActionListener{
 
             boolean possible = false;
             if(isCarteVictoireTas(i)){
-                possible = modelPartie.tryAchatCarteVictoire(i);
+                //notification : alerte achat carte malédiction
+                boolean accepteAchat = true;
+
+                if(i==3)
+                    accepteAchat = viewPartie.showOptionDialog("Malédiction", "Voulez-vous vraiment acheter une carte malédiction ?");
+
+
+                if (accepteAchat)
+                    possible = modelPartie.tryAchatCarteVictoire(i);
 
             }
             else if(isCarteActionTas(i)){
