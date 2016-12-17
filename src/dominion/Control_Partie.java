@@ -55,11 +55,12 @@ public class Control_Partie implements ActionListener{
             }
         }
         else if(modelPartie.getEtapesTour()  == EtapesTour.ACHAT){
-            //Notifie le joueur suivant que c'est son tour
-            viewPartie.jOptionMessage("Votre tour", "Joueur " + modelPartie.getJoueurAdverse().getNomJoueur() + ". C'est votre tour");
 
             if(i==17){
                 boolean changeJoueur = modelPartie.finTourAchat();
+                //Notifie le joueur suivant que c'est son tour
+                viewPartie.jOptionMessage("Votre tour", "Joueur " + modelPartie.getJoueurAdverse().getNomJoueur() + ". C'est votre tour");
+
                 viewPartie.majVue();
                 if(changeJoueur) viewPartie.changeJoueur();
                 return;
@@ -94,7 +95,9 @@ public class Control_Partie implements ActionListener{
             if(possible){
                 boolean changeJoueur = modelPartie.finTourAchat();
                 viewPartie.majVue();
-                if(changeJoueur) viewPartie.changeJoueur();
+                if(changeJoueur){
+                    viewPartie.changeJoueur();
+                }
             }
 
             if(modelPartie.finDePartie()){
@@ -103,7 +106,6 @@ public class Control_Partie implements ActionListener{
                 View_Accueil accueil = new View_Accueil();
                 new Control_Accueil(accueil, modelAccueil);
             }
-
         }
         else if(modelPartie.getEtapesTour()  == EtapesTour.CHOIX_1_CARTE_DE_MAIN){
 
