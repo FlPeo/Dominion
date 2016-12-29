@@ -39,8 +39,10 @@ public class Control_Accueil implements ActionListener
             joueurs[0] = "joueur1";
             joueurs[1] = "joueur2";
             Partie partie= Partie.creerPartie(joueurs);
-            View_Partie vuePartie = new View_Partie(partie);
-            new Control_Partie(vuePartie, partie);
+            //View_Partie vuePartie = new View_Partie(partie);
+            viewAccueil.creerWidgetPartie(partie);
+            //new Control_Partie(vuePartie, partie);
+            new Control_Partie_Mouse(partie, viewAccueil.getVuePlateau(), viewAccueil);
         }
         else if(e.getSource().equals(viewAccueil.getCredit()))
         {

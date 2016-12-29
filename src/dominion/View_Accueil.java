@@ -9,8 +9,10 @@ import java.io.IOException;
 /**
  * Created by sakalypse on 05/11/16.
  */
-public class View_Accueil extends JFrame {
+public class View_Accueil extends JFrame
+{
     private int xSize, ySize;
+    private View_Plateau vuePlateau;
 
     private JLabel titre;
     private JLabel background;
@@ -38,8 +40,6 @@ public class View_Accueil extends JFrame {
         setTitle("Dominion");
         setResizable(false);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-
     }
 
     /**
@@ -101,6 +101,13 @@ public class View_Accueil extends JFrame {
         background.add(organisation, BorderLayout.CENTER);
 
         setContentPane(background);
+    }
+
+    void creerWidgetPartie(Partie modelPartie)
+    {
+        vuePlateau = new View_Plateau(this, modelPartie);
+        setContentPane(vuePlateau);
+        setVisible(true);
     }
 
     /**
@@ -182,5 +189,9 @@ public class View_Accueil extends JFrame {
 
     public JButton getQuitterJeu() {
         return quitterJeu;
+    }
+
+    public View_Plateau getVuePlateau() {
+        return vuePlateau;
     }
 }
