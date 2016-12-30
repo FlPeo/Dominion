@@ -4,6 +4,11 @@ public class Dominion
 {
     public static void main (String[] args)
     {
+        if(args.length != 0){
+            System.out.println("USAGE: java Dominion");
+            System.exit(1);
+        }
+
         javax.swing.SwingUtilities.invokeLater(new Runnable()
         {
             @Override
