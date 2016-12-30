@@ -40,7 +40,19 @@ public class View_Status_Bar
 
         g.drawString(statutText, xBase + 50, yBase-32);
         g.drawString("C'est au tour de : "+ partie.getJoueurCourrant().getNomJoueur(), xBase + 700, yBase-32);
-        g.drawString(partie.getEtapesTour().getIndication(), xBase + 900, yBase-32);
+
+        String chaineEtapeTour = partie.getEtapesTour().getIndication();
+        if(partie.getEtapesTour().equals(EtapesTour.ACHAT)){
+            String pluriel = (partie.getJoueurCourrant().getNbTourAchat() == 1)?"":"s";
+            chaineEtapeTour += (" (" + partie.getJoueurCourrant().getNbTourAchat()+ " restant" + pluriel +")");
+        }
+        else if(partie.getEtapesTour().equals(EtapesTour.ACTION)){
+            String pluriel = (partie.getJoueurCourrant().getNbTourAchat() == 1)?"":"s";
+            chaineEtapeTour += (" (" + partie.getJoueurCourrant().getNbTourAction()+ " restant" + pluriel +")");
+        }
+
+        g.drawString(chaineEtapeTour, xBase + 900, yBase-32);
+
     }
 
     /**
