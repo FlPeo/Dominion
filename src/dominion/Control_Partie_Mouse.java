@@ -33,6 +33,7 @@ public class Control_Partie_Mouse extends MouseAdapter
                     && e.getY()<vuePlateau.getCoordBouton()[3])
             {
                 partie.finTourAction();
+                vuePlateau.majVue();
             }
             else
             {

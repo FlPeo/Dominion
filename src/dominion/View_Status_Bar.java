@@ -40,6 +40,7 @@ public class View_Status_Bar
 
         g.drawString(statutText, xBase + 50, yBase-32);
         g.drawString("C'est au tour de : "+ partie.getJoueurCourrant().getNomJoueur(), xBase + 700, yBase-32);
+        g.drawString(partie.getEtapesTour().getIndication(), xBase + 900, yBase-32);
     }
 
     /**
