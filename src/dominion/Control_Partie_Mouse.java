@@ -17,7 +17,7 @@ public class Control_Partie_Mouse extends MouseAdapter
         this.vueAccueil = vueAccueil;
         this.partie = partie;
         this.vuePlateau = vuePlateau;
-        vuePlateau.setListenrs(this);
+        vuePlateau.setListeners(this);
     }
 
     @Override
@@ -72,13 +72,13 @@ public class Control_Partie_Mouse extends MouseAdapter
                     && e.getX()<vuePlateau.getCoordBouton()[2]
                     && e.getY()<vuePlateau.getCoordBouton()[3])
             {
-                boolean changeJoueur = partie.finTourAchat();
+                boolean joueurAChange = partie.finTourAchat();
                 //Notifie le joueur suivant que c'est son tour
                 vuePlateau.jOptionMessage("Votre tour",
-                        "Joueur " + partie.getJoueurAdverse().getNomJoueur() + ". C'est votre tour");
+                        "Joueur " + partie.getJoueurCourrant().getNomJoueur() + ". C'est votre tour");    //A deplacer dans le if ? (si plusieurs tours d'achat)
 
                 vuePlateau.majVue();
-                if(changeJoueur) vuePlateau.changeJoueur();
+                if(joueurAChange) vuePlateau.changeJoueur();
                 return;
             }
 

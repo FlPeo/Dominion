@@ -309,7 +309,7 @@ class View_Plateau extends JPanel
             return false;
     }
 
-    void setListenrs(MouseListener listenrs)
+    void setListeners(MouseListener listenrs)
     {
         this.addMouseListener(listenrs);
     }
