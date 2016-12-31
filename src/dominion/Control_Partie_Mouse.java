@@ -138,7 +138,11 @@ public class Control_Partie_Mouse extends MouseAdapter
 
             if(possible)
             {
-                partie.finTourAchat();
+                if(partie.finTourAchat()){
+                    vuePlateau.jOptionMessage("Votre tour",
+                            "Joueur " + partie.getJoueurCourrant().getNomJoueur() + ". C'est votre tour");
+                }
+
                 vuePlateau.majVue();
             }
 
