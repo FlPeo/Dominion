@@ -1,9 +1,11 @@
 package dominion;
 
+import java.io.Serializable;
+
 /**
  * Created by Flo on 06/12/2016.
  */
-public enum EtapesTour {
+public enum EtapesTour implements Serializable {
     ACTION("Tour d'action"),
     ACHAT("Tour d'achat"),
     CHOIX_1_CARTE_DE_MAIN("Veuillez choisir une carte de votre main"),

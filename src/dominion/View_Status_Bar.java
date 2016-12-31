@@ -63,4 +63,8 @@ public class View_Status_Bar
     void setStatutText(String statutText) {
         this.statutText = statutText;
     }
+
+    public void setPartie(Partie partie) {
+        this.partie = partie;
+    }
 }

@@ -1,6 +1,7 @@
 package dominion;
 
 import javax.sql.rowset.CachedRowSet;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -9,7 +10,7 @@ import java.util.List;
 /**
  * Created by mlucile on 22/11/16.
  */
-public class Joueur
+public class Joueur implements Serializable
 {
     private int numero;  //numero ordre pour partie. commence à 0
 

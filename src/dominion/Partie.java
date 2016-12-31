@@ -2,6 +2,7 @@ package dominion;
 
 import dominion.Actions.Action;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.ListIterator;
  * Created by florian on 13/11/2016.
  */
 
-public class Partie
+public class Partie implements Serializable
 {
     private Joueur[] joueurs;
     private Joueur joueurCourrant;
@@ -324,6 +325,40 @@ public class Partie
                     "");
             finTourAction();
         }
+    }
+
+    public void sauvegarder() throws SauvegardeException{
+        try{
+            ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("sauvegarde/partie.object")));
+            oos.writeObject(this);
+            oos.close();
+        }
+        catch(FileNotFoundException fe){
+            throw new SauvegardeException(SauvegardeException.TypeSauvegardeException.FICHIER_INEXISTANT);
+        }
+        catch(IOException ie){
+            throw new SauvegardeException(SauvegardeException.TypeSauvegardeException.ECRITURE_IMPOSSIBLE);
+        }
+    }
+
+    public static Partie getSauvegardePartie() throws SauvegardeException{
+        Partie p;
+        try{
+            ObjectInputStream oos = new ObjectInputStream(new BufferedInputStream(new FileInputStream("sauvegarde/partie.object")));
+            p = (Partie)oos.readObject();
+            oos.close();
+        }
+        catch(FileNotFoundException fe){
+            throw new SauvegardeException(SauvegardeException.TypeSauvegardeException.FICHIER_INEXISTANT);
+        }
+        catch(IOException ie){
+            throw new SauvegardeException(SauvegardeException.TypeSauvegardeException.LECTURE_IMPOSSIBLE);
+        }
+        catch(ClassNotFoundException ce){
+            throw new SauvegardeException(SauvegardeException.TypeSauvegardeException.LECTURE_IMPOSSIBLE);
+        }
+
+        return p;
     }
 
     public void setEtapesTour(EtapesTour etapesTour) {

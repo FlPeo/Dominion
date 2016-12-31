@@ -42,7 +42,9 @@ public class Control_Accueil implements ActionListener
             //View_Partie vuePartie = new View_Partie(partie);
             viewAccueil.creerWidgetPartie(partie);
             //new Control_Partie(vuePartie, partie);
-            new Control_Partie_Mouse(partie, viewAccueil.getVuePlateau(), viewAccueil);
+            Control_Partie_Mouse controlMouse = new Control_Partie_Mouse(partie, viewAccueil.getVuePlateau(), viewAccueil);
+            viewAccueil.creerMenuPartie(partie, controlMouse);
+            viewAccueil.validate();
         }
         else if(e.getSource().equals(viewAccueil.getCredit()))
         {

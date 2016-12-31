@@ -110,6 +110,35 @@ public class View_Accueil extends JFrame
         setVisible(true);
     }
 
+    void creerMenuPartie(Partie modelPartie, Control_Partie_Mouse controlMouse){
+        JMenuBar barreMenu = new JMenuBar();
+        JMenu file = new JMenu("Partie");
+        Control_Menu controlMenu = new Control_Menu(modelPartie, controlMouse, vuePlateau, vuePlateau.getBarreStatut());
+
+        JMenuItem save = new JMenuItem("Sauvegarder");
+        save.setActionCommand("save");
+        save.addActionListener(controlMenu);
+
+        JMenuItem load = new JMenuItem("Reprendre");
+        load.setActionCommand("load");
+        load.addActionListener(controlMenu);
+
+        JMenuItem quit = new JMenuItem("Quitter");
+        quit.setActionCommand("quit");
+        quit.addActionListener(controlMenu);
+
+        file.add(save);
+        file.add(load);
+        file.add(quit);
+
+        barreMenu.add(file);
+        setJMenuBar(barreMenu);
+    }
+
+    void removeMenuPartie(){
+        setJMenuBar(null);
+    }
+
     /**
      * display
      * Permet au controlGroup d'afficher la vue lorsque tous les controlleurs sont en place

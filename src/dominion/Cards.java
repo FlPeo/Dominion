@@ -1,10 +1,12 @@
 package dominion;
 
 
+import java.io.Serializable;
+
 /**
  * Created by sakalypse on 20/11/16.
  */
-public abstract class Cards {
+public abstract class Cards implements Serializable {
     protected int cout;
     protected int id;
 

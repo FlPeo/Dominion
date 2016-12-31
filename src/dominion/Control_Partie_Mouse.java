@@ -235,4 +235,8 @@ public class Control_Partie_Mouse extends MouseAdapter
     public void mouseExited(MouseEvent e) {
         super.mouseExited(e);
     }
+
+    public void setPartie(Partie partie) {
+        this.partie = partie;
+    }
 }

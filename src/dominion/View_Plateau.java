@@ -339,4 +339,13 @@ class View_Plateau extends JPanel
     public int[] getCoordBouton() {
         return coordBouton;
     }
+
+    public void setPartie(Partie partie) {
+        this.modelPartie = partie;
+        barreStatut.setPartie(partie);
+    }
+
+    public View_Status_Bar getBarreStatut() {
+        return barreStatut;
+    }
 }
