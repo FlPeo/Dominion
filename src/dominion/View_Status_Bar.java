@@ -47,7 +47,7 @@ public class View_Status_Bar
             chaineEtapeTour += (" (" + partie.getJoueurCourrant().getNbTourAchat()+ " restant" + pluriel +")");
         }
         else if(partie.getEtapesTour().equals(EtapesTour.ACTION)){
-            String pluriel = (partie.getJoueurCourrant().getNbTourAchat() == 1)?"":"s";
+            String pluriel = (partie.getJoueurCourrant().getNbTourAction() == 1)?"":"s";
             chaineEtapeTour += (" (" + partie.getJoueurCourrant().getNbTourAction()+ " restant" + pluriel +")");
         }
 

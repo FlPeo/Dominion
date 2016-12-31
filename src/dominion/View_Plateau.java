@@ -195,10 +195,10 @@ class View_Plateau extends JPanel
 
         // Coordonnées cartes main
         coordCartesMain.clear();
-        List<Integer> coords = new ArrayList<>();
+        List<Integer> coords;
         for(i=0; i<cartesMain.size(); i++)
         {
-            coords.clear();
+            coords = new ArrayList<>();
             coords.add(vueAccueil.getWidth() - (80 * vueAccueil.getWidth() / 100) + i * (61/cartesMain.size() * vueAccueil.getWidth() / 100));
             coords.add(vueAccueil.getHeight() - (45 * vueAccueil.getHeight() / 100));
             coords.add(coords.get(0) + 55/cartesMain.size() * vueAccueil.getWidth() / 100);
