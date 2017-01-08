@@ -76,11 +76,13 @@ public class Control_Partie_Mouse extends MouseAdapter
             {
                 boolean joueurAChange = partie.finTourAchat();
                 //Notifie le joueur suivant que c'est son tour
-                vuePlateau.jOptionMessage("Votre tour",
-                        "Joueur " + partie.getJoueurCourrant().getNomJoueur() + ". C'est votre tour");    //A deplacer dans le if ? (si plusieurs tours d'achat)
+                if(joueurAChange){
+                    vuePlateau.jOptionMessage("Votre tour",
+                            "Joueur " + partie.getJoueurCourrant().getNomJoueur() + ". C'est votre tour");    //A deplacer dans le if ? (si plusieurs tours d'achat)
 
+                    vuePlateau.changeJoueur();
+                }
                 vuePlateau.majVue();
-                if(joueurAChange) vuePlateau.changeJoueur();
                 return;
             }
 
