@@ -3,6 +3,8 @@ package dominion;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import static dominion.View_Partie.NB_BOUTONS_CHOIX;
+
 /**
  * Created by mlucile on 16/12/16.
  */
@@ -154,6 +156,40 @@ public class Control_Partie_Mouse extends MouseAdapter
                 vueAccueil.afficherMenu();
                 Model_Accueil modelAccueil = new Model_Accueil(); //ModelAccueil est-il vraiment utile ?
                 new Control_Accueil(vueAccueil, modelAccueil);
+            }
+        }
+
+        else if(partie.getEtapesTour()  == EtapesTour.CHOIX_1_CARTE_ACTION_DE_MAIN){
+            // Si clique sur le bouton passerTour
+            if(e.getX()>vuePlateau.getCoordBouton()[0]
+                    && e.getY()>vuePlateau.getCoordBouton()[1]
+                    && e.getX()<vuePlateau.getCoordBouton()[2]
+                    && e.getY()<vuePlateau.getCoordBouton()[3])
+            {
+                partie.removeFirstAction();
+                partie.setEtapesTour(EtapesTour.ACTION);
+
+                partie.actions();
+                vuePlateau.majVue();
+                return;
+            }
+
+            for(int i=0; i<vuePlateau.getCoordCartesMain().size(); i++)
+            {
+                if (e.getX() > vuePlateau.getCoordCartesMain().get(i).get(0)
+                        && e.getY() > vuePlateau.getCoordCartesMain().get(i).get(1)
+                        && e.getX() < vuePlateau.getCoordCartesMain().get(i).get(2)
+                        && e.getY() < vuePlateau.getCoordCartesMain().get(i).get(3))
+                {
+                    Cards c = partie.getJoueurCourrant().getCarteMain(i);
+                    if(c.isCarteAction()){
+                        partie.addCarteChoisieParJoueur(c);
+                        partie.setEtapesTour(EtapesTour.ACTION);
+
+                        partie.actions();
+                        vuePlateau.majVue();
+                    }
+                }
             }
         }
 
