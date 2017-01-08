@@ -104,12 +104,15 @@ public class Control_Partie_Mouse extends MouseAdapter
                         && e.getY()<vuePlateau.getCoordCartesVictoires()[i][3])
                 {
                     //notification : alerte achat carte malédiction
-                    boolean accepteAchat = true;
-                    if (i == 4) {
+                    boolean accepteAchat;
+                    if (i == 3) {
                         accepteAchat = vuePlateau.showOptionDialog("Malédiction", "Voulez-vous vraiment acheter une carte malédiction ?");
 
                         if (accepteAchat)
                             possible = partie.tryAchatCarteVictoire(i);
+                    }
+                    else{
+                        possible = partie.tryAchatCarteVictoire(i);
                     }
                 }
             }
