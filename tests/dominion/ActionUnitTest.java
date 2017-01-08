@@ -248,7 +248,9 @@ public class ActionUnitTest {
         joueurs[0] = new Joueur("joueur", creerCartesPourTest(p), 0);
         p.setJoueurs(joueurs);
 
-        joueurs[0].piocherMalediction();
+        VictoireCards carte = p.getListeCartesVictoire().get(3).get(0);
+        p.getListeCartesVictoire().get(3).remove(0);
+        joueurs[0].piocherMalediction(carte);
 
         Assert.assertEquals(joueurs[0].getCarteMain(0).getId(),3);
     }

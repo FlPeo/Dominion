@@ -105,7 +105,10 @@ public class JoueurUnitTest {
         ArrayList<Cards> cards = new ArrayList<>();
         joueurs[0] = new Joueur("joueur", cards, 0);
         p.setJoueurs(joueurs);
-        joueurs[0].piocherMalediction();
+
+        VictoireCards carte = p.getListeCartesVictoire().get(3).get(0);
+        p.getListeCartesVictoire().get(3).remove(0);
+        joueurs[0].piocherMalediction(carte);
         Assert.assertEquals(1, joueurs[0].getSizeMain());
     }
 

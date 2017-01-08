@@ -276,7 +276,7 @@ class View_Plateau extends JPanel
         {
             if(modelPartie.getNbRestantCartesTresor(i) == 0)
             {
-                g.setColor(new Color(255,255,255,(float)0.2));
+                g.setColor(new Color(255,255,255,0));
                 g.fillRect(vueAccueil.getWidth()-(17*vueAccueil.getWidth()/100),
                         vueAccueil.getHeight()-(98*vueAccueil.getHeight()/100) + i*(17*vueAccueil.getHeight()/100),
                         12*vueAccueil.getWidth()/100, 16*vueAccueil.getHeight()/100);
@@ -291,7 +291,7 @@ class View_Plateau extends JPanel
         {
             if(modelPartie.getNbRestantCartesVictoire(i) == 0)
             {
-                g.setColor(new Color(255,255,255,(float)0.2));
+                g.setColor(new Color(255,255,255,0));
                 g.fillRect(vueAccueil.getWidth()-(95*vueAccueil.getWidth()/100),
                         vueAccueil.getHeight()-(98*vueAccueil.getHeight()/100) + i*(17*vueAccueil.getHeight()/100),
                         12*vueAccueil.getWidth()/100, 16*vueAccueil.getHeight()/100);
@@ -306,7 +306,7 @@ class View_Plateau extends JPanel
         {
             if(modelPartie.getNbRestantCartesAction(i) == 0)
             {
-                g.setColor(new Color(255,255,255,(float)0.2));
+                g.setColor(new Color(255,255,255,0));
                 if(i<5)
                 {
                     g.fillRect(vueAccueil.getWidth() - (80 * vueAccueil.getWidth() / 100) + i * (12 * vueAccueil.getWidth() / 100),

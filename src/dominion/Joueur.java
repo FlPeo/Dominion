@@ -108,9 +108,8 @@ public class Joueur implements Serializable
         }
     }
 
-    public void piocherMalediction() {
+    public void piocherMalediction(VictoireCards cardsMalediction) {
         if (!douveDansMain()) {
-            VictoireCards cardsMalediction = new VictoireCards(3);
             main.add(cardsMalediction);
         }
     }
