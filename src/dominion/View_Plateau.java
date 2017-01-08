@@ -80,16 +80,16 @@ class View_Plateau extends JPanel
                     null);
 
             //dessine le background du nombre
-            g.setColor(new Color (255,255,255, 80));
-            g.fillRect(vueAccueil.getWidth()-(96*vueAccueil.getWidth()/100),
-                    vueAccueil.getHeight()-(100*vueAccueil.getHeight()/100) + i*(17*vueAccueil.getHeight()/100),
+            g.setColor(new Color (0,0,255, 150));
+            g.fillRect(vueAccueil.getWidth()-(95*vueAccueil.getWidth()/100),
+                    vueAccueil.getHeight()-(98*vueAccueil.getHeight()/100) + i*(17*vueAccueil.getHeight()/100),
                     vueAccueil.getWidth()-(99*vueAccueil.getWidth()/100),
                     vueAccueil.getHeight()-(97*vueAccueil.getHeight()/100));
             g.setColor(new Color(0,0,0));
             //écrit le nombre de carte restant
             g.drawString(String.valueOf(modelPartie.getNbRestantCartesVictoire(i)),
-                    vueAccueil.getWidth()-(96*vueAccueil.getWidth()/100),
-                    vueAccueil.getHeight()-(98*vueAccueil.getHeight()/100) + i*(17*vueAccueil.getHeight()/100));
+                    vueAccueil.getWidth()-(95*vueAccueil.getWidth()/100),
+                    vueAccueil.getHeight()-(96*vueAccueil.getHeight()/100) + i*(17*vueAccueil.getHeight()/100));
         }
 
 
@@ -104,16 +104,16 @@ class View_Plateau extends JPanel
 
 
             //dessine le background du nombre
-            g.setColor(new Color (255,255,255, 80));
-            g.fillRect(vueAccueil.getWidth()-(18*vueAccueil.getWidth()/100),
-                    vueAccueil.getHeight()-(100*vueAccueil.getHeight()/100) + i*(17*vueAccueil.getHeight()/100),
+            g.setColor(new Color (0,0,255, 150));
+            g.fillRect(vueAccueil.getWidth()-(17*vueAccueil.getWidth()/100),
+                    vueAccueil.getHeight()-(98*vueAccueil.getHeight()/100) + i*(17*vueAccueil.getHeight()/100),
                     vueAccueil.getWidth()-(99*vueAccueil.getWidth()/100),
                     vueAccueil.getHeight()-(97*vueAccueil.getHeight()/100));
             g.setColor(new Color(0,0,0));
             //écrit le nombre de carte restant
             g.drawString(String.valueOf(modelPartie.getNbRestantCartesTresor(i)),
-                    vueAccueil.getWidth()-(18*vueAccueil.getWidth()/100),
-                    vueAccueil.getHeight()-(98*vueAccueil.getHeight()/100) + i*(17*vueAccueil.getHeight()/100));
+                    vueAccueil.getWidth()-(17*vueAccueil.getWidth()/100),
+                    vueAccueil.getHeight()-(96*vueAccueil.getHeight()/100) + i*(17*vueAccueil.getHeight()/100));
         }
 
         // Cartes action
@@ -128,16 +128,16 @@ class View_Plateau extends JPanel
                         null);
 
                 //dessine le background du nombre
-                g.setColor(new Color (255,255,255, 80));
-                g.fillRect(vueAccueil.getWidth() - (81 * vueAccueil.getWidth() / 100) + i * (12 * vueAccueil.getWidth() / 100),
-                        vueAccueil.getHeight() - (100 * vueAccueil.getHeight() / 100),
+                g.setColor(new Color (0,0,255, 150));
+                g.fillRect(vueAccueil.getWidth() - (80 * vueAccueil.getWidth() / 100) + i * (12 * vueAccueil.getWidth() / 100),
+                        vueAccueil.getHeight() - (98 * vueAccueil.getHeight() / 100),
                         vueAccueil.getWidth()-(99*vueAccueil.getWidth()/100),
                         vueAccueil.getHeight()-(97*vueAccueil.getHeight()/100));
                 g.setColor(new Color(0,0,0));
                 //écrit le nombre de carte restant
                 g.drawString(String.valueOf(modelPartie.getNbRestantCartesAction(i)),
-                        vueAccueil.getWidth() - (81 * vueAccueil.getWidth() / 100) + i * (12 * vueAccueil.getWidth() / 100),
-                        vueAccueil.getHeight() - (98 * vueAccueil.getHeight() / 100));
+                        vueAccueil.getWidth() - (80 * vueAccueil.getWidth() / 100) + i * (12 * vueAccueil.getWidth() / 100),
+                        vueAccueil.getHeight() - (96 * vueAccueil.getHeight() / 100));
             }
             else
             {
@@ -148,16 +148,16 @@ class View_Plateau extends JPanel
                         null);
 
                 //dessine le background du nombre
-                g.setColor(new Color (255,255,255, 80));
-                g.fillRect(vueAccueil.getWidth() - (81 * vueAccueil.getWidth() / 100) + (i-5) * (12 * vueAccueil.getWidth() / 100),
-                        vueAccueil.getHeight() - (100 * vueAccueil.getHeight() / 100) + 24 * vueAccueil.getHeight() / 100,
+                g.setColor(new Color (0,0,255, 150));
+                g.fillRect(vueAccueil.getWidth() - (80 * vueAccueil.getWidth() / 100) + (i-5) * (12 * vueAccueil.getWidth() / 100),
+                        vueAccueil.getHeight() - (98 * vueAccueil.getHeight() / 100) + 24 * vueAccueil.getHeight() / 100,
                         vueAccueil.getWidth()-(99*vueAccueil.getWidth()/100),
                         vueAccueil.getHeight()-(97*vueAccueil.getHeight()/100));
                 g.setColor(new Color(0,0,0));
                 //écrit le nombre de carte restant
                 g.drawString(String.valueOf(modelPartie.getNbRestantCartesAction(i)),
-                        vueAccueil.getWidth() - (81 * vueAccueil.getWidth() / 100) + (i-5) * (12 * vueAccueil.getWidth() / 100),
-                        vueAccueil.getHeight() - (98 * vueAccueil.getHeight() / 100) + 24 * vueAccueil.getHeight() / 100);
+                        vueAccueil.getWidth() - (80 * vueAccueil.getWidth() / 100) + (i-5) * (12 * vueAccueil.getWidth() / 100),
+                        vueAccueil.getHeight() - (96 * vueAccueil.getHeight() / 100) + 24 * vueAccueil.getHeight() / 100);
             }
         }
 
