@@ -89,10 +89,6 @@ public class Joueur implements Serializable
     }
 
 
-
-
-
-
     //mouvements de carte
 
     public void piocher(int valeur) {
