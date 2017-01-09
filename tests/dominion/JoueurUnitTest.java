@@ -1,6 +1,7 @@
 package dominion;
 
 
+import dominion.Actions.Action;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -121,5 +122,33 @@ public class JoueurUnitTest {
 
         joueurs[0].deckToDefausse();
         Assert.assertEquals(0,joueurs[0].getSizeDeck());
+    }
+
+
+    @Test
+    public void testCalculePoints(){
+        Joueur[] joueurs = new Joueur[1];
+        Partie p = creerPartie();
+
+        ArrayList<Cards> cards = new ArrayList<>();
+        ArrayList<Action> listeActions;
+
+        listeActions = new ArrayList<Action>();    //carte jardins
+        cards.add(new ActionCards(12, listeActions, 4));   //+1 pt car 10 cartes
+
+        cards.add(new VictoireCards(0));   // +1pt
+        cards.add(new VictoireCards(1));   // 31pt
+        cards.add(new VictoireCards(2));   // 61pt
+        cards.add(new VictoireCards(3));   // -1pt
+
+        for(int i = 0 ; i<5 ; i++){
+            cards.add(new CoinsCards(2));   //+0pt
+        }
+
+
+        joueurs[0] = new Joueur("joueur", cards, 0);
+        p.setJoueurs(joueurs);
+
+        Assert.assertEquals(10, joueurs[0].calculePoints());
     }
 }
