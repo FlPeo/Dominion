@@ -116,6 +116,10 @@ public class View_Accueil extends JFrame
         JMenu file = new JMenu("Partie");
         Control_Menu controlMenu = new Control_Menu(modelPartie, controlMouse, vuePlateau, vuePlateau.getBarreStatut());
 
+        JMenuItem retourAccueil = new JMenuItem("Retour à l'accueil");
+        retourAccueil.setActionCommand("retourAccueil");
+        retourAccueil.addActionListener(controlMenu);
+
         JMenuItem save = new JMenuItem("Sauvegarder");
         save.setActionCommand("save");
         save.addActionListener(controlMenu);
@@ -128,6 +132,7 @@ public class View_Accueil extends JFrame
         quit.setActionCommand("quit");
         quit.addActionListener(controlMenu);
 
+        file.add(retourAccueil);
         file.add(save);
         file.add(load);
         file.add(quit);

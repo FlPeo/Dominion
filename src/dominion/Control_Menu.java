@@ -1,6 +1,7 @@
 package dominion;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -47,6 +48,19 @@ public class Control_Menu implements ActionListener{
             case "quit":
                 if(plateau.showOptionDialog("Quitter", "Êtes-vous sûr de vouloir quitter ? La partie ne sera pas sauvegardée.")){
                     System.exit(0);
+                }
+                break;
+            case "retourAccueil":
+                if(plateau.showOptionDialog("Retour à l'accueil", "Êtes-vous sûr de vouloir quitter et retourner à l'accueil ? La partie ne sera pas sauvegardée.")){
+                    //enlève la fenetre du plateau
+                    Window w = SwingUtilities.getWindowAncestor(plateau);
+                    w.setVisible(false);
+
+                    //met en place le menu
+                    Model_Accueil modelAccueil = new Model_Accueil();
+                    View_Accueil accueil = new View_Accueil();
+                    new Control_Accueil(accueil, modelAccueil);
+                    accueil.display();
                 }
                 break;
         }

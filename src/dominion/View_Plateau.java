@@ -401,4 +401,5 @@ class View_Plateau extends JPanel
     public View_Status_Bar getBarreStatut() {
         return barreStatut;
     }
+
 }
