@@ -26,7 +26,6 @@ public class Control_Partie implements ActionListener{
         viewPartie.setActionListener(this);
     }
 
-
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton bouton = (JButton)e.getSource();
@@ -155,9 +154,6 @@ public class Control_Partie implements ActionListener{
 
         }
     }
-
-
-
 
     public boolean isCarteVictoireTas(int i){
         return i<=3;
