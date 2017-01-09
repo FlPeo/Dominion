@@ -264,7 +264,6 @@ public class Partie implements Serializable
         int i = 0;
 
         for(int k = 0 ; k<listeActions.size() && !bloque; k++){
-            System.out.println("eea");
             Action a =listeActions.get(i);
             a.action();
             bloque = a.estBloquante();
@@ -276,8 +275,6 @@ public class Partie implements Serializable
         }
 
         if(!bloque){
-            System.out.println("pas bloque" +
-                    "");
             finTourAction();
         }
     }

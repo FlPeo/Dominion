@@ -131,16 +131,13 @@ public class Joueur implements Serializable
         defausseToDeck();
         mainToDeck();
         int pointsCarteJardin = deck.size()/10;
-        System.out.println(deck.size() + " " + pointsCarteJardin);
 
         for(Cards c : deck){
             if(c.isCarteVictoire()){
                 points += ((VictoireCards)c).getPointVictoire();
-                System.out.println("vic : " + ((VictoireCards)c).getPointVictoire());
             }
             else if(c.getId() == 12){  //carte jardin
                 points += pointsCarteJardin;
-                System.out.println("jard : " + pointsCarteJardin);
             }
         }
 

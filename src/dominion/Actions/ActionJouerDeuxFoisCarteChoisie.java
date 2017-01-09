@@ -20,8 +20,5 @@ public class ActionJouerDeuxFoisCarteChoisie extends Action{
             partie.getJoueurCourrant().carteVaDeMainADefausse(a);
         }
         partie.clearCarteChoisieParJoueur();
-
-        System.out.println("eee");
-        System.out.println(a.getCheminImage());
     }
 }

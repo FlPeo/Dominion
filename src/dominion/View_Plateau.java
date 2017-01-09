@@ -256,14 +256,6 @@ class View_Plateau extends JPanel
             coords.add(coords.get(1) + 95/cartesMain.size() * vueAccueil.getWidth() / 100);
             coordCartesMain.add(coords);
         }
-
-        for(i=0; i<coordCartesMain.size(); i++)
-        {
-            System.out.print(coordCartesMain.get(i).get(0) + "  ");
-            System.out.print(coordCartesMain.get(i).get(1) + "  ");
-            System.out.print(coordCartesMain.get(i).get(2) + "  ");
-            System.out.println(coordCartesMain.get(i).get(3) + "  ");
-        }
     }
 
     public void majVue()
