@@ -44,7 +44,8 @@ public class View_Status_Bar
         String chaineEtapeTour = partie.getEtapesTour().getIndication();
         if(partie.getEtapesTour().equals(EtapesTour.ACHAT)){
             String pluriel = (partie.getJoueurCourrant().getNbTourAchat() == 1)?"":"s";
-            chaineEtapeTour += (" (" + partie.getJoueurCourrant().getNbTourAchat()+ " restant" + pluriel +")");
+            chaineEtapeTour += (" (" + partie.getJoueurCourrant().getNbTourAchat()+ " restant" + pluriel +")"+
+            "         "+ partie.getJoueurCourrant().getCoins()+ " coins disponibles");
         }
         else if(partie.getEtapesTour().equals(EtapesTour.ACTION)){
             String pluriel = (partie.getJoueurCourrant().getNbTourAction() == 1)?"":"s";
