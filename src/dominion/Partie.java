@@ -27,14 +27,12 @@ public class Partie implements Serializable
     private ArrayList<Action> listeActions;
     private int idJoueurChoixAction;
 
-
     public static Partie creerPartie(String[] nomJoueurs) {
         Joueur[] joueurs = new Joueur[nomJoueurs.length];
         for (int i = 0; i < nomJoueurs.length; i++) {
             joueurs[i] = new Joueur(nomJoueurs[i], Joueur.createDeckDepart(), i);
             joueurs[i].piocher(5);
         }
-
 
         ArrayList<ArrayList<VictoireCards>> cartesVictoire = VictoireCards.creerCartesVictoire(nomJoueurs.length);
         ArrayList<ArrayList<CoinsCards>> cartesTresor = CoinsCards.creerCartesTresor(nomJoueurs.length);
@@ -65,7 +63,6 @@ public class Partie implements Serializable
 
 
     //les fins
-
     /**
      * La partie est terminé si :
      * il n'y plus de carte province
@@ -129,7 +126,6 @@ public class Partie implements Serializable
     }
 
     //achats
-
     public boolean tryAchatCarteVictoire(int i) {
         if(listeCartesVictoire.get(i).size() == 0) return false;
 
@@ -173,7 +169,6 @@ public class Partie implements Serializable
     }
 
     //operations sur les piles de carte action
-
     public int getIdPileCarteAction(int index){
         if(getNbRestantCartesAction(index) == 0){
             return -1;
@@ -187,16 +182,6 @@ public class Partie implements Serializable
         listeCartesAction.get(index).add(carte);
     }
 
-
-    /**
-     * Le joueur pioche un certain nombre de carte de son deck
-     * @nbCarte : le nombre de carte à piocher
-     */
-    public void joueurPioche(Joueur joueur, int nbCarte){
-        joueur.piocher(nbCarte);
-    }   //utile
-
-
     //get et set
     public int getNbJoueurs(){
         return joueurs.length;
@@ -206,7 +191,7 @@ public class Partie implements Serializable
     }
     public void setJoueurCourrant(Joueur joueurCourrant) {
         this.joueurCourrant = joueurCourrant;
-    }  //utile ?
+    }
     public void setJoueurs(Joueur[] joueurs) {
         this.joueurs = joueurs;
         joueurCourrant = joueurs[0];
@@ -223,8 +208,6 @@ public class Partie implements Serializable
     public String getIdAction(int index){
         return ""+listeCartesAction.get(index).get(0).getId();
     }
-
-
 
     public int getNbRestantCartesVictoire(int i) {
         return listeCartesVictoire.get(i).size();
@@ -250,10 +233,6 @@ public class Partie implements Serializable
 
     public ArrayList<ArrayList<CoinsCards>> getListeCartesTresor() {
         return listeCartesTresor;
-    }
-
-    public ArrayList<ArrayList<ActionCards>> getListeCartesAction() {
-        return listeCartesAction;
     }
 
     public Joueur getJoueurAdverse() {
@@ -347,10 +326,6 @@ public class Partie implements Serializable
 
     public Cards getCarteChoisieParJoueur(int i){
         return cartesChoisiesParJoueur.get(i);
-    }
-
-    public int getSizeCarteChoisieParJoueur(){
-        return cartesChoisiesParJoueur.size();
     }
 
     public void clearCarteChoisieParJoueur(){
