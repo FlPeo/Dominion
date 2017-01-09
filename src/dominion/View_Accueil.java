@@ -114,7 +114,7 @@ public class View_Accueil extends JFrame
     void creerMenuPartie(Partie modelPartie, Control_Partie_Mouse controlMouse){
         JMenuBar barreMenu = new JMenuBar();
         JMenu file = new JMenu("Partie");
-        Control_Menu controlMenu = new Control_Menu(modelPartie, controlMouse, vuePlateau, vuePlateau.getBarreStatut());
+        Control_Menu controlMenu = new Control_Menu(modelPartie, controlMouse, vuePlateau);
 
         JMenuItem retourAccueil = new JMenuItem("Retour à l'accueil");
         retourAccueil.setActionCommand("retourAccueil");
@@ -164,16 +164,7 @@ public class View_Accueil extends JFrame
         credit.addActionListener(listener);
         quitterJeu.addActionListener(listener);
     }
-    /**
-     * messagePop
-     * Permet d'afficher une fenetre pop-up avec un champs de saisi pour récupérer une information
-     * @param message (texte à afficher)
-     * @return fenetre qui s'affiche
-     */
-    String messagePop(String message)
-    {
-        return JOptionPane.showInputDialog(this, message, "dominion.Dominion", JOptionPane.QUESTION_MESSAGE);
-    }
+
 
     /**
      * Affiche une fenêtre popup
@@ -196,23 +187,6 @@ public class View_Accueil extends JFrame
         setVisible(true);
     }
 
-    /**
-     * initMenuPartie
-     * Instancie les attributs de la bar de menu
-     *
-     */
-    void initMenuPartie()
-    {
-        JMenuBar barMenu = new JMenuBar();
-
-        JMenu optionPartie = new JMenu("Fichier");
-        JMenu parametres = new JMenu("Options");
-
-        barMenu.add(optionPartie);
-        barMenu.add(parametres);
-
-        setJMenuBar(barMenu);
-    }
 
     public JButton getLancerPartie() {
         return lancerPartie;

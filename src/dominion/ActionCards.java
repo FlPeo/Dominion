@@ -14,13 +14,11 @@ public class ActionCards extends Cards {
 
     private List<Action> listeActions;
     private boolean carteADefausserApresAction;
-    private static ActionCards carteBoucheTrou = new ActionCards(5, new ArrayList<Action>(), 3);
-    //Supprimer la carte bouche trou des que possible ! (quand on aura fait toutes les cartes action
 
     public ActionCards(int id, List<Action> actions, int cout){   //id = numero de l'img de la carte
         super(id, cout);
         listeActions = actions;
-        carteADefausserApresAction = true;   //false que si la carte doit etre ecartée (concerne une seule carte action normalement)
+        carteADefausserApresAction = true;   //false que si la carte doit etre ecartée (concerne une seule carte action)
     }
 
     public void action(){
@@ -37,10 +35,6 @@ public class ActionCards extends Cards {
         return true;
     }
 
-    public void setCarteADefausserApresAction() {
-        this.carteADefausserApresAction = false;
-    }
-
     public boolean isCarteADefausserApresAction() {
         return this.carteADefausserApresAction;
     }
@@ -53,13 +47,8 @@ public class ActionCards extends Cards {
     }
 
     private static ActionCards[] creer25CartesAction(Partie p) {
-        //ActionCards[] listeCartesActions = new ActionCards[25];
         ActionCards[] listeCartesActions = new ActionCards[11];
-        for(int i = 0; i< listeCartesActions.length ; i++){
-            listeCartesActions[i] = carteBoucheTrou;
-        }
-
-        List<Action> listeActions = new ArrayList<Action>();
+        List<Action> listeActions;
 
         listeActions = new ArrayList<Action>(); // carte sorcière
         listeActions.add(new ActionAddCarteMalediction(p,1));

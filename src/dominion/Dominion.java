@@ -14,9 +14,8 @@ public class Dominion
             @Override
             public void run()
             {
-                Model_Accueil modelAccueil = new Model_Accueil(); //ModelAccueil est-il vraiment utile ?
                 View_Accueil accueil = new View_Accueil();
-                new Control_Accueil(accueil, modelAccueil);
+                new Control_Accueil(accueil);
                 accueil.display();
             }
         });

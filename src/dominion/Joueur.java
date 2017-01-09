@@ -1,9 +1,7 @@
 package dominion;
 
-import javax.sql.rowset.CachedRowSet;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -17,7 +15,6 @@ public class Joueur implements Serializable
     private int coins;
     private int nbTourAction;
     private int nbTourAchat;
-    private int nbDeCartesADefausser;
     private String nomJoueur;
     private List<Cards> main;
     private List<Cards> deck; // 0=fin, taille-1=debut
@@ -32,7 +29,6 @@ public class Joueur implements Serializable
         coins = 0;
         nbTourAction = 1;
         nbTourAchat = 1;
-        nbDeCartesADefausser = 0;
     }
 
     //les add basiques

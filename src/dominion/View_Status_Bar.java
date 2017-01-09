@@ -56,15 +56,6 @@ public class View_Status_Bar
 
     }
 
-    /**
-     * setStatutText
-     * met à jour le texte de la barre de statut
-     * @param statutText (texte de la barre de statut)
-     */
-    void setStatutText(String statutText) {
-        this.statutText = statutText;
-    }
-
     public void setPartie(Partie partie) {
         this.partie = partie;
     }

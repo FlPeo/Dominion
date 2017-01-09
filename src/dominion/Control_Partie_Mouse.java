@@ -3,8 +3,6 @@ package dominion;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import static dominion.View_Partie.NB_BOUTONS_CHOIX;
-
 /**
  * Created by mlucile on 16/12/16.
  */
@@ -171,8 +169,7 @@ public class Control_Partie_Mouse extends MouseAdapter
                 vueAccueil.removeMenuPartie();
 
                 vueAccueil.afficherMenu();
-                Model_Accueil modelAccueil = new Model_Accueil(); //ModelAccueil est-il vraiment utile ?
-                new Control_Accueil(vueAccueil, modelAccueil);
+                new Control_Accueil(vueAccueil);
             }
         }
 

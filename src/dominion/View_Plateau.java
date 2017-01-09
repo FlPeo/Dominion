@@ -390,8 +390,4 @@ class View_Plateau extends JPanel
         barreStatut.setPartie(partie);
     }
 
-    public View_Status_Bar getBarreStatut() {
-        return barreStatut;
-    }
-
 }

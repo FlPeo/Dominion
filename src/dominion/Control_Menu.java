@@ -12,13 +12,11 @@ public class Control_Menu implements ActionListener{
     private Partie partie;
     private Control_Partie_Mouse control;
     private View_Plateau plateau;
-    private View_Status_Bar barreStatus;
 
-    public Control_Menu(Partie p, Control_Partie_Mouse cm, View_Plateau pl, View_Status_Bar vs){
+    public Control_Menu(Partie p, Control_Partie_Mouse cm, View_Plateau pl){
         partie = p;
         control = cm;
         plateau = pl;
-        barreStatus = vs;
     }
 
     @Override
@@ -57,9 +55,8 @@ public class Control_Menu implements ActionListener{
                     w.setVisible(false);
 
                     //met en place le menu
-                    Model_Accueil modelAccueil = new Model_Accueil();
                     View_Accueil accueil = new View_Accueil();
-                    new Control_Accueil(accueil, modelAccueil);
+                    new Control_Accueil(accueil);
                     accueil.display();
                 }
                 break;

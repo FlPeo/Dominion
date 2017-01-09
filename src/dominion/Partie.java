@@ -25,7 +25,6 @@ public class Partie implements Serializable
 
     private ArrayList<Cards> cartesChoisiesParJoueur;
     private ArrayList<Action> listeActions;
-    private int idJoueurChoixAction;
 
     public static Partie creerPartie(String[] nomJoueurs) {
         Joueur[] joueurs = new Joueur[nomJoueurs.length];
@@ -52,7 +51,6 @@ public class Partie implements Serializable
                   ArrayList<ArrayList<CoinsCards>> cartesTresor, ArrayList<Cards> cartesChoisiesParJoueur,
                     ArrayList<Action> listeActions) {
 
-        idJoueurChoixAction = -1;
         this.listeActions = listeActions;
         this.cartesChoisiesParJoueur= cartesChoisiesParJoueur;
 
@@ -229,10 +227,6 @@ public class Partie implements Serializable
 
     public ArrayList<ArrayList<VictoireCards>> getListeCartesVictoire() {
         return listeCartesVictoire;
-    }
-
-    public ArrayList<ArrayList<CoinsCards>> getListeCartesTresor() {
-        return listeCartesTresor;
     }
 
     public Joueur getJoueurAdverse() {
