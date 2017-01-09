@@ -54,6 +54,7 @@ public class ActionCards extends Cards {
         listeActions.add(new ActionAddCarteMalediction(p,1));
         listeCartesActions[0] = new ActionCards(3, listeActions, 5);
 
+        listeActions = new ArrayList<Action>();
         listeActions.add(new ActionAddXCartes(p, 1));    //carte marché
         listeActions.add(new ActionAddXActions(p, 1));
         listeActions.add(new ActionAddXAchats(p, 1));
