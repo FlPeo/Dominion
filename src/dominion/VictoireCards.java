@@ -27,8 +27,6 @@ public class VictoireCards extends Cards {
         }
     }
 
-
-
     public static ArrayList<ArrayList<VictoireCards>> creerCartesVictoire(int nbJoueurs) {
         ArrayList<ArrayList<VictoireCards>> listeCartes = new ArrayList<ArrayList<VictoireCards>>();
 
@@ -49,8 +47,6 @@ public class VictoireCards extends Cards {
 
         return listeCartes;
     }
-
-
 
     //get et set
     public String getCheminImage(){
