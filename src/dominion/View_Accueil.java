@@ -32,10 +32,11 @@ public class View_Accueil extends JFrame
         creerWidgetAccueil();
 
         setUndecorated(true);
-        Toolkit tk = Toolkit.getDefaultToolkit();
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        /*Toolkit tk = Toolkit.getDefaultToolkit();
         xSize = (int) tk.getScreenSize().getWidth();
         ySize = (int) tk.getScreenSize().getHeight();
-        setSize(xSize, ySize);
+        setSize(xSize, ySize);*/
 
         setTitle("Dominion");
         setResizable(false);
