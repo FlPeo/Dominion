@@ -128,16 +128,11 @@ public class ActionCards extends Cards {
         listeActions.add(new ActionAddXCoins(p, 2));
         listeCartesActions[10] = new ActionCards(23, listeActions, 5);
 
-        // Adonis
-
-        // ------
-
-
         return listeCartesActions;
     }
 
     private static ArrayList<ArrayList<ActionCards>> selectionner10Cartes(ActionCards[] listeToutesCartesActions, int nbJoueurs) {
-        //TO DO
+
         ArrayList<ArrayList<ActionCards>> listeCartes = new ArrayList<ArrayList<ActionCards>>();
         ArrayList<ActionCards> cards;
         int nbCartesJardins = (nbJoueurs == 2)?8:12;
