@@ -199,7 +199,7 @@ public class Partie implements Serializable
 
 
 
-    //inutile pour l'instant
+
 
     /**
      * Le joueur pioche un certain nombre de carte de son deck

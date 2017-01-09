@@ -101,7 +101,7 @@ public class Control_Partie implements ActionListener{
 
             if(modelPartie.finDePartie()){
                 viewPartie.dispose();
-                Model_Accueil modelAccueil = new Model_Accueil(); //ModelAccueil est-il vraiment utile ?
+                Model_Accueil modelAccueil = new Model_Accueil();
                 View_Accueil accueil = new View_Accueil();
                 new Control_Accueil(accueil, modelAccueil);
             }
