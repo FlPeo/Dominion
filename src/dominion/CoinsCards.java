@@ -24,11 +24,9 @@ public class CoinsCards extends Cards
         }
     }
 
-
     public static ArrayList<ArrayList<CoinsCards>> creerCartesTresor(int nbJoueurs) {
         ArrayList<ArrayList<CoinsCards>> listeCartes = new ArrayList<ArrayList<CoinsCards>>();
         ArrayList<CoinsCards> listeCartesUnType;
-
 
         listeCartesUnType = new ArrayList<>();
         for(int j = 0 ; j<(60 - 7*nbJoueurs) ; j++){
@@ -47,9 +45,6 @@ public class CoinsCards extends Cards
             listeCartesUnType.add(new CoinsCards(2));
         }
         listeCartes.add(listeCartesUnType);
-
-
-
 
         return listeCartes;
     }
