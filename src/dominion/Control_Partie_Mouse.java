@@ -155,6 +155,21 @@ public class Control_Partie_Mouse extends MouseAdapter
 
             if(partie.finDePartie())
             {
+                String messageFinPartie = partie.getJoueurCourrant().getNomJoueur() + " a " + partie.getJoueurCourrant().calculePoints() + " points\n" +
+                        partie.getJoueurAdverse().getNomJoueur() + " a " + partie.getJoueurAdverse().calculePoints() + " points\n";
+                if(partie.getJoueurCourrant().calculePoints() > partie.getJoueurAdverse().calculePoints()){
+                    messageFinPartie += partie.getJoueurCourrant().getNomJoueur() + " gagne la partie";
+                }
+                else if(partie.getJoueurCourrant().calculePoints() < partie.getJoueurAdverse().calculePoints()) {
+                    messageFinPartie += partie.getJoueurAdverse().getNomJoueur() + " gagne la partie";
+                }
+                else {
+                    messageFinPartie += "Égalité !";
+                }
+
+                vuePlateau.jOptionMessage("Fin partie", messageFinPartie);
+                vueAccueil.removeMenuPartie();
+
                 vueAccueil.afficherMenu();
                 Model_Accueil modelAccueil = new Model_Accueil(); //ModelAccueil est-il vraiment utile ?
                 new Control_Accueil(vueAccueil, modelAccueil);

@@ -129,12 +129,43 @@ public class Joueur implements Serializable
         main.clear();
     }
 
+    public void mainToDeck(){
+        for(Cards c : main){
+            deck.add(c);
+        }
+        main.clear();
+    }
+
     // Envoie le deck entier à la défausse
     public void deckToDefausse(){
         for(Cards c : deck){
             defausse.add(c);
         }
         deck.clear();
+    }
+
+
+
+    //decompte des points
+    public int calculePoints(){
+        int points = 0;
+        defausseToDeck();
+        mainToDeck();
+        int pointsCarteJardin = deck.size()/10;
+        System.out.println(deck.size() + " " + pointsCarteJardin);
+
+        for(Cards c : deck){
+            if(c.isCarteVictoire()){
+                points += ((VictoireCards)c).getPointVictoire();
+                System.out.println("vic : " + ((VictoireCards)c).getPointVictoire());
+            }
+            else if(c.getId() == 12){  //carte jardin
+                points += pointsCarteJardin;
+                System.out.println("jard : " + pointsCarteJardin);
+            }
+        }
+
+        return points;
     }
 
 
