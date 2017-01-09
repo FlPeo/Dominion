@@ -67,6 +67,7 @@ class View_Plateau extends JPanel
     protected void paintComponent(Graphics g)
     {
         super.paintComponent(g);
+        g.setFont(new Font("default", Font.BOLD, 10));
 
         g.drawImage(background.getImage(), 0, 0, vueAccueil.getWidth(), vueAccueil.getHeight(), null);
 
@@ -80,7 +81,7 @@ class View_Plateau extends JPanel
                     null);
 
             //dessine le background du nombre
-            g.setColor(new Color (0,0,255, 150));
+            g.setColor(new Color (255,255,255, 150));
             g.fillRect(vueAccueil.getWidth()-(95*vueAccueil.getWidth()/100),
                     vueAccueil.getHeight()-(98*vueAccueil.getHeight()/100) + i*(17*vueAccueil.getHeight()/100),
                     vueAccueil.getWidth()-(99*vueAccueil.getWidth()/100),
@@ -104,7 +105,7 @@ class View_Plateau extends JPanel
 
 
             //dessine le background du nombre
-            g.setColor(new Color (0,0,255, 150));
+            g.setColor(new Color (255,255,255, 150));
             g.fillRect(vueAccueil.getWidth()-(17*vueAccueil.getWidth()/100),
                     vueAccueil.getHeight()-(98*vueAccueil.getHeight()/100) + i*(17*vueAccueil.getHeight()/100),
                     vueAccueil.getWidth()-(99*vueAccueil.getWidth()/100),
@@ -128,7 +129,7 @@ class View_Plateau extends JPanel
                         null);
 
                 //dessine le background du nombre
-                g.setColor(new Color (0,0,255, 150));
+                g.setColor(new Color (255,255,255, 150));
                 g.fillRect(vueAccueil.getWidth() - (80 * vueAccueil.getWidth() / 100) + i * (12 * vueAccueil.getWidth() / 100),
                         vueAccueil.getHeight() - (98 * vueAccueil.getHeight() / 100),
                         vueAccueil.getWidth()-(99*vueAccueil.getWidth()/100),
@@ -148,7 +149,7 @@ class View_Plateau extends JPanel
                         null);
 
                 //dessine le background du nombre
-                g.setColor(new Color (0,0,255, 150));
+                g.setColor(new Color (255,255,255, 150));
                 g.fillRect(vueAccueil.getWidth() - (80 * vueAccueil.getWidth() / 100) + (i-5) * (12 * vueAccueil.getWidth() / 100),
                         vueAccueil.getHeight() - (98 * vueAccueil.getHeight() / 100) + 24 * vueAccueil.getHeight() / 100,
                         vueAccueil.getWidth()-(99*vueAccueil.getWidth()/100),
