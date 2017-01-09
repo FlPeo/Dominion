@@ -35,9 +35,6 @@ public class Joueur implements Serializable
         nbDeCartesADefausser = 0;
     }
 
-
-
-
     //les add basiques
     public int addCoin(int nbAjout){
         coins += nbAjout;
@@ -54,10 +51,6 @@ public class Joueur implements Serializable
         return nbTourAchat;
     }
 
-
-
-
-
     //les reductions de tours
     public void reduitTourAction(){
         nbTourAction--;
@@ -67,13 +60,7 @@ public class Joueur implements Serializable
         nbTourAchat--;
     }
 
-
-
-
-
     //operations sur la main
-
-
     public void removeCarteMainEcartee(Cards c){
         main.remove(c);
     }
@@ -88,9 +75,7 @@ public class Joueur implements Serializable
         defausse.add(c);
     }
 
-
     //mouvements de carte
-
     public void piocher(int valeur) {
         Cards card;
         for (int i = 0; i < valeur; i++){
@@ -140,8 +125,6 @@ public class Joueur implements Serializable
         deck.clear();
     }
 
-
-
     //decompte des points
     public int calculePoints(){
         int points = 0;
@@ -182,11 +165,7 @@ public class Joueur implements Serializable
         return deck;
     }
 
-
-
-
     //get et set
-
     public String getNomJoueur() {
         return nomJoueur;
     }
@@ -224,9 +203,6 @@ public class Joueur implements Serializable
     public int getSizeDeck(){
         return deck.size();
     }
-    public Cards getCarteDeck(int index){
-        return deck.get(index);
-    }    //il faudra voir si c'est utile
 
     public Cards getCarteMain(int index){
         return main.get(index);
@@ -253,6 +229,5 @@ public class Joueur implements Serializable
         }
         return false;
     }
-
 
 }
