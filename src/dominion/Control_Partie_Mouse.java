@@ -229,57 +229,6 @@ public class Control_Partie_Mouse extends MouseAdapter
 
         }
 
-
-
-/*
-        // Victoire
-        for(int i=0; i<vuePlateau.getCoordCartesVictoires().length; i++)
-        {
-            if(e.getX()>vuePlateau.getCoordCartesVictoires()[i][0]
-                    && e.getY()>vuePlateau.getCoordCartesVictoires()[i][1]
-                    && e.getX()<vuePlateau.getCoordCartesVictoires()[i][2]
-                    && e.getY()<vuePlateau.getCoordCartesVictoires()[i][3])
-            {
-                System.out.println("Ok ici victoire " + i);
-            }
-        }
-
-        // Trésor
-        for(int i=0; i<vuePlateau.getCoordCartesTresors().length; i++)
-        {
-            if(e.getX()>vuePlateau.getCoordCartesTresors()[i][0]
-                    && e.getY()>vuePlateau.getCoordCartesTresors()[i][1]
-                    && e.getX()<vuePlateau.getCoordCartesTresors()[i][2]
-                    && e.getY()<vuePlateau.getCoordCartesTresors()[i][3])
-            {
-                System.out.println("Ok ici trésors " + i);
-            }
-        }
-
-        // Action
-        for(int i=0; i<vuePlateau.getCoordCartesActions().length; i++)
-        {
-            if (e.getX() > vuePlateau.getCoordCartesActions()[i][0]
-                    && e.getY() > vuePlateau.getCoordCartesActions()[i][1]
-                    && e.getX() < vuePlateau.getCoordCartesActions()[i][2]
-                    && e.getY() < vuePlateau.getCoordCartesActions()[i][3])
-            {
-                System.out.println("Ok ici actions  " + i);
-            }
-        }
-
-        // Main
-        for(int i=0; i<vuePlateau.getCoordCartesMain().size(); i++)
-        {
-            if (e.getX() > vuePlateau.getCoordCartesMain().get(i).get(0)
-                    && e.getY() > vuePlateau.getCoordCartesMain().get(i).get(1)
-                    && e.getX() < vuePlateau.getCoordCartesMain().get(i).get(2)
-                    && e.getY() < vuePlateau.getCoordCartesMain().get(i).get(3))
-            {
-                System.out.println("Ok ici main  " + i);
-            }
-        }
-*/
     }
 
     @Override
