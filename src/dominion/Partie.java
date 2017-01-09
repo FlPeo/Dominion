@@ -128,9 +128,6 @@ public class Partie implements Serializable
         return finAchat;
     }
 
-
-
-
     //achats
 
     public boolean tryAchatCarteVictoire(int i) {
@@ -175,11 +172,6 @@ public class Partie implements Serializable
         return true;
     }
 
-
-
-
-
-
     //operations sur les piles de carte action
 
     public int getIdPileCarteAction(int index){
@@ -196,11 +188,6 @@ public class Partie implements Serializable
     }
 
 
-
-
-
-
-
     /**
      * Le joueur pioche un certain nombre de carte de son deck
      * @nbCarte : le nombre de carte à piocher
@@ -208,8 +195,6 @@ public class Partie implements Serializable
     public void joueurPioche(Joueur joueur, int nbCarte){
         joueur.piocher(nbCarte);
     }   //utile
-
-
 
 
     //get et set
@@ -297,16 +282,7 @@ public class Partie implements Serializable
 
         boolean bloque = false;
 
-        //Iterator<Action> iterateurAction = listeActions.iterator();
-
         int i = 0;
-        /*while(iterateurAction.hasNext() && !bloque){
-            System.out.println("eea");
-            Action a = iterateurAction.next();
-            a.action();
-            bloque = a.estBloquante();
-            i++;
-        }*/
 
         for(int k = 0 ; k<listeActions.size() && !bloque; k++){
             System.out.println("eea");
