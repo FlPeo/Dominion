@@ -27,7 +27,6 @@ public class Control_Menu implements ActionListener{
             case "save":
                 try {
                     partie.sauvegarder();
-                    System.out.println("Sauv !");
                 } catch (SauvegardeException e1) {
                     afficherErreurSauvegarde(e1);
                 }
@@ -38,7 +37,6 @@ public class Control_Menu implements ActionListener{
                     control.setPartie(partie);
                     plateau.setPartie(partie);
                     plateau.majVue();
-                    System.out.println("Get Sauv !");
                 } catch (SauvegardeException e1) {
                     afficherErreurGetSauvegarde(e1);
                 }

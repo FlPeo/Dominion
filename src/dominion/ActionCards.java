@@ -52,6 +52,7 @@ public class ActionCards extends Cards {
 
         listeActions = new ArrayList<Action>(); // carte sorcière
         listeActions.add(new ActionAddCarteMalediction(p,1));
+        listeActions.add(new ActionAddXCartes(p, 2));
         listeCartesActions[0] = new ActionCards(3, listeActions, 5);
 
         listeActions = new ArrayList<Action>();

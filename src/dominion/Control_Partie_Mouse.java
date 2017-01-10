@@ -141,15 +141,7 @@ public class Control_Partie_Mouse extends MouseAdapter
                 }
             }
 
-            if(possible)
-            {
-                if(partie.finTourAchat()){
-                    vuePlateau.jOptionMessage("Votre tour",
-                            "Joueur " + partie.getJoueurCourrant().getNomJoueur() + ". C'est votre tour");
-                }
 
-                vuePlateau.majVue();
-            }
 
             if(partie.finDePartie())
             {
@@ -170,6 +162,15 @@ public class Control_Partie_Mouse extends MouseAdapter
 
                 vueAccueil.afficherMenu();
                 new Control_Accueil(vueAccueil);
+            }
+            else if(possible)
+            {
+                if(partie.finTourAchat()){
+                    vuePlateau.jOptionMessage("Votre tour",
+                            "Joueur " + partie.getJoueurCourrant().getNomJoueur() + ". C'est votre tour");
+                }
+
+                vuePlateau.majVue();
             }
         }
 
