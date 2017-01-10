@@ -260,11 +260,15 @@ class View_Plateau extends JPanel
 
     public void majVue()
     {
-        //a mettre dans repaint ?
+        int i;
+        cartesActions = new ImageIcon[10];
+        for(i=0 ; i<10 ;i++)
+            cartesActions[i] = new ImageIcon("Images/Action/Action"+modelPartie.getIdAction(i)+".jpg");
+
         Graphics g = this.getGraphics();
         super.paintComponent(g);
 
-        int i;
+
         for(i = 0 ; i<3 ; i++)
         {
             if(modelPartie.getNbRestantCartesTresor(i) == 0)
