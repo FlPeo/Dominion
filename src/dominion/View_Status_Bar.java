@@ -38,8 +38,8 @@ public class View_Status_Bar
         g.fillRect(xBase,yBase-50, vuePlateau.getWidth(), 40);
         g.setColor(Color.white);
 
-        g.drawString(statutText, xBase + 50, yBase-32);
-        g.drawString("C'est au tour de : "+ partie.getJoueurCourrant().getNomJoueur(), xBase + 700, yBase-32);
+        g.drawString(statutText, xBase + 40, yBase-32);
+        g.drawString("C'est au tour de : "+ partie.getJoueurCourrant().getNomJoueur(), xBase + 300, yBase-32);
 
         String chaineEtapeTour = partie.getEtapesTour().getIndication();
         if(partie.getEtapesTour().equals(EtapesTour.ACHAT)){
@@ -52,7 +52,7 @@ public class View_Status_Bar
             chaineEtapeTour += (" (" + partie.getJoueurCourrant().getNbTourAction()+ " restant" + pluriel +")");
         }
 
-        g.drawString(chaineEtapeTour, xBase + 900, yBase-32);
+        g.drawString(chaineEtapeTour, xBase + 600, yBase-32);
 
     }
 

@@ -322,7 +322,6 @@ class View_Plateau extends JPanel
                         coordCartesActions[i][2] + 12*vueAccueil.getWidth()/100, coordCartesActions[i][3]);
             }
         }
-        //fin de a mettre dans repaint ?
 
         cartesMain.clear();
         for(i=0 ; i<modelPartie.getJoueurCourrant().getSizeMain() ;i++)
