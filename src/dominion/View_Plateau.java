@@ -174,7 +174,7 @@ class View_Plateau extends JPanel
         }
 
         // Bouton pour passer un tour action ou coins
-        g.drawImage(new ImageIcon("Images/decors/finTour.png").getImage(),
+        g.drawImage(new ImageIcon("Images/decors/phaseAttaque.png").getImage(),
                 vueAccueil.getWidth()-(17*vueAccueil.getWidth()/100),
                 vueAccueil.getHeight()-(40*vueAccueil.getHeight()/100),
                 12*vueAccueil.getWidth()/100, 16*vueAccueil.getHeight()/100,
