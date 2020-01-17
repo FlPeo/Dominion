@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Created by sakalypse on 05/11/16.
@@ -49,7 +50,7 @@ public class View_Accueil extends JFrame
     private void initAttribut()
     {
         // Initialisation des variables
-        titre = new JLabel(new ImageIcon(("Images/decors/logo.jpg")));
+        titre = new JLabel(new ImageIcon(getClass().getResource("/Images/decors/logo.jpg")));
 
         lancerPartie = new DominionButton("Lancer la partie");
         credit = new DominionButton("Credits");
@@ -58,7 +59,9 @@ public class View_Accueil extends JFrame
         GraphicsEnvironment fontLabel = GraphicsEnvironment.getLocalGraphicsEnvironment();
         try
         {
-            fontLabel.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("font/Cardinal.ttf")));
+            InputStream fontPath = getClass().getResourceAsStream("/font/Cardinal.ttf");
+            System.out.println(fontPath);
+            fontLabel.registerFont(Font.createFont(Font.TRUETYPE_FONT, fontPath));
         }
         catch (FontFormatException | IOException fe)
         {
@@ -96,7 +99,7 @@ public class View_Accueil extends JFrame
 
 
         // Mise en place du fond d'écran
-        background = new JLabel(new ImageIcon("Images/decors/background1.jpg"));
+        background = new JLabel(new ImageIcon(getClass().getResource("/Images/decors/background1.jpg")));
         background.setSize(xSize, ySize);
         background.setLayout(new FlowLayout());
         background.add(organisation, BorderLayout.CENTER);

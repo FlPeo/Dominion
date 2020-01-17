@@ -32,29 +32,29 @@ class View_Plateau extends JPanel
     {
         vueAccueil = vue;
         this.modelPartie = modelPartie;
-        background = new ImageIcon("Images/decors/backgroundParty.jpg");
+        background = new ImageIcon(getClass().getResource("/Images/decors/backgroundParty.jpg"));
         barreStatut = new View_Status_Bar(modelPartie, this);
 
         // Instanciation des cartes action
         int i;
         cartesActions = new ImageIcon[10];
         for(i=0 ; i<10 ;i++)
-            cartesActions[i] = new ImageIcon("Images/Action/Action"+modelPartie.getIdAction(i)+".jpg");
+            cartesActions[i] = new ImageIcon(getClass().getResource("/Images/Action/Action"+modelPartie.getIdAction(i)+".jpg"));
 
         // Instanciation des cartes victoires
         cartesVictoires = new ImageIcon[4];
         for(i=0 ; i<4 ;i++)
-            cartesVictoires[i] = new ImageIcon("Images/Victoire/Victoire"+i+".jpg");
+            cartesVictoires[i] = new ImageIcon(getClass().getResource("/Images/Victoire/Victoire"+i+".jpg"));
 
         // Instanciation des cartes trésor
         cartesTresors = new ImageIcon[3];
         for(i=0 ; i<3 ;i++)
-            cartesTresors[i] = new ImageIcon("Images/Tresor/Tresor"+i+".jpg");
+            cartesTresors[i] = new ImageIcon(getClass().getResource("/Images/Tresor/Tresor"+i+".jpg"));
 
         // Instanciation des cartes de la main
         cartesMain = new ArrayList<>();
         for(i=0 ; i<5 ;i++)
-            cartesMain.add(new ImageIcon(modelPartie.getJoueurCourrant().getCheminImageCarte(i)));
+            cartesMain.add(new ImageIcon(getClass().getResource(modelPartie.getJoueurCourrant().getCheminImageCarte(i))));
     }
 
     @Override
@@ -174,7 +174,7 @@ class View_Plateau extends JPanel
         }
 
         // Bouton pour passer un tour action ou coins
-        g.drawImage(new ImageIcon("Images/decors/phaseAttaque.png").getImage(),
+        g.drawImage(new ImageIcon(getClass().getResource("/Images/decors/phaseAttaque.png")).getImage(),
                 vueAccueil.getWidth()-(17*vueAccueil.getWidth()/100),
                 vueAccueil.getHeight()-(40*vueAccueil.getHeight()/100),
                 12*vueAccueil.getWidth()/100, 16*vueAccueil.getHeight()/100,
@@ -263,7 +263,7 @@ class View_Plateau extends JPanel
         int i;
         cartesActions = new ImageIcon[10];
         for(i=0 ; i<10 ;i++)
-            cartesActions[i] = new ImageIcon("Images/Action/Action"+modelPartie.getIdAction(i)+".jpg");
+            cartesActions[i] = new ImageIcon(getClass().getResource("/Images/Action/Action"+modelPartie.getIdAction(i)+".jpg"));
 
         Graphics g = this.getGraphics();
         super.paintComponent(g);
@@ -325,7 +325,7 @@ class View_Plateau extends JPanel
 
         cartesMain.clear();
         for(i=0 ; i<modelPartie.getJoueurCourrant().getSizeMain() ;i++)
-            cartesMain.add(new ImageIcon(modelPartie.getJoueurCourrant().getCheminImageCarte(i)));
+            cartesMain.add(new ImageIcon(getClass().getResource(modelPartie.getJoueurCourrant().getCheminImageCarte(i))));
 
         repaint();
     }

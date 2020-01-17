@@ -32,7 +32,7 @@ public abstract class Cards implements Serializable {
     }
 
     public String getCheminImage(){
-        return "Images/";
+        return "/Images/";
     }
 
     public boolean isCarteAction(){
