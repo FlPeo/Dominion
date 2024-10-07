@@ -2,9 +2,9 @@
 
 ## Usage
 ### Prérequis
-Vous devez avoir Java 13 installé sur votre ordinateur, et accessible via un terminal (grâce à la variable système PATH).
+Vous devez avoir Java 13 ou plus installé sur votre ordinateur, et accessible via un terminal (grâce à la variable système PATH).
 
-Il faut également ajouter Java 13 à la variable d'environnement "JAVA_HOME".
+Il faut également ajouter Java 13 ou plus à la variable d'environnement "JAVA_HOME".
 
 ### Compiler les sources et lancer l'application
 Pour compiler et lancer l'application, vous devez ouvrir un terminal dans le dossier du projet, et lancer la commande :
